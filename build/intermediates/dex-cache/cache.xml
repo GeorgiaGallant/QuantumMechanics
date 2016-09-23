@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/RobotCore-release/jars/libs/d2xx.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a6cc281519866bbb2d0ac480409212d8d9816d18">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/d2xx_98a2c23cb3f43b59dbd479eecac1da131536b99c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/RobotCore-release/jars/libs/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="15632afee8c14c7c0ba7168d25710c38badee7c8">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_bf54f5f895c3fe4b7018b6f00968577c253bd5ac/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/FtcCommon-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ec068454985de756c760317d9c63c23b3ce2055c">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-FtcCommon-release_8b43075b38f9c047ffc6474d2df81c72f14315a7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/Blocks-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c5216545889f13d4560613d35d498b2ca2db1d1f">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Blocks-release_8d89edfdd5ca1fbfff3a4ab805f34474369ae609/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4ea379c0cc6ec0eed9136ac53b8e52a8fa3c4170">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_28c057b3c2bdb834a1cf74f4c07cb5ad20d77066/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/RobotCore-release/jars/libs/Vuforia.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ca5be875a082e7b5f0277a0e85564617b181ae76">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/Vuforia_84bbb37d8ce5d6e4206743e0dfb74e4ecdc3595e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/Inspection-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b1a3a00c0ec6312741914629ed283101a3301293">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Inspection-release_45e02340af75ae7544238e9c4e0fee2d87e89768/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/WirelessP2p-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-WirelessP2p-release_fb7c641eee08935d71ef01e93c6a537c9ff32d46/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/ModernRobotics-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-ModernRobotics-release_ce10fd894f47b850020b34beac9640e0582ca9a2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/RobotCore-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2a24cdb4bd53ff8f890698775608b84ab6703fe2">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-RobotCore-release_e68a78ec94c55dafdca54f34a7a534c6b69dd8f7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7a7269d80dedbe24663300c3bf91d86ea2be8725">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_dc526e9d7b06ad7bb0df28248bbf693bd8901eec/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/Analytics-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Analytics-release_b2648e6b46a5d6865ffe32c23b9c2191f7a390b0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/Hardware-release/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4d964a43f48520428edfadad534fa0a3279deb84">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Hardware-release_b4de5e34513b333bb883cefeb13a0fd9072d0006/classes.dex" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/exploded-aar/RobotCore-release/jars/libs/gson-2.7.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f8bcd8ef93636064d155d8e8ea6541ea7e4280d0">
+        <dex dex="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.7_fdd9105751b6967b4e4d06c0ad14dee21668d1b3/classes.dex" />
+    </item>
+
+</items>

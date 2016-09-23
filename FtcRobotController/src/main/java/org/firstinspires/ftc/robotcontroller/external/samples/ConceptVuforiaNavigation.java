@@ -85,7 +85,6 @@ import java.util.List;
  */
 
 @Autonomous(name="Concept: Vuforia Navigation", group ="Concept")
-@Disabled
 public class ConceptVuforiaNavigation extends LinearOpMode {
 
     public static final String TAG = "Vuforia Sample";
@@ -109,11 +108,7 @@ public class ConceptVuforiaNavigation extends LinearOpMode {
          * Note that in addition to indicating which camera is in use, we also need to tell the system
          * the location of the phone on the robot; see phoneLocationOnRobot below.
          *
-         * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
-         * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-         * Vuforia will not load without a valid license being provided. Vuforia 'Development' license
-         * keys, which is what is needed here, can be obtained free of charge from the Vuforia developer
-         * web site at https://developer.vuforia.com/license-manager.
+         * License Key is valid under William's account. Contact him for information. (GitHub username is @nywillb, slack username is @wbarkoff)
          *
          * Valid Vuforia license keys are always 380 characters long, and look as if they contain mostly
          * random data. As an example, here is a example of a fragment of a valid key:
@@ -123,7 +118,7 @@ public class ConceptVuforiaNavigation extends LinearOpMode {
          * {@link Parameters} instance with which you initialize Vuforia.
          */
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
-        parameters.vuforiaLicenseKey = "ATsODcD/////AAAAAVw2lR...d45oGpdljdOh5LuFB9nDNfckoxb8COxKSFX";
+        parameters.vuforiaLicenseKey = "ASCs7lf/////AAAAGUMOtvDNM0U+kaQ1BJF0Yl2AXvoPV52krlqfjE4Lb6DJruPkOp47L5gKnS1gHboCTipXJ71coRIS8ezyZFCvWcrZlwQPONAgAWhCQuwGiRD0N6162xAjqqu3zJISC2ArLLredPWPaZAnucSfjngnQftLyLALm0qpEwRA7Zqk0buz1TNN7LiXJESaczXPz5wn10JgA/c/QBqvhUUIvbB8/nC3ARkjA9rLvJSbV05hIf2C6IgL9AbJejPo80ZrRrm66GH0RaiNXaJvC/sc6CYNWF3wONEZMbWxCwlukID0/d6mZRCtFW6c2VTUUdo8SG8ZM8bf0DxOxICNj11S+Uq1gBNGuXv3CGXnSk91MIYdW6dU";
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
 
@@ -135,7 +130,7 @@ public class ConceptVuforiaNavigation extends LinearOpMode {
          * example "StonesAndChips", datasets can be found in in this project in the
          * documentation directory.
          */
-        VuforiaTrackables stonesAndChips = this.vuforia.loadTrackablesFromAsset("StonesAndChips");
+        VuforiaTrackables stonesAndChips = this.vuforia.loadTrackablesFromAsset("FTC_2016-17");
         VuforiaTrackable redTarget = stonesAndChips.get(0);
         redTarget.setName("RedTarget");  // Stones
 
