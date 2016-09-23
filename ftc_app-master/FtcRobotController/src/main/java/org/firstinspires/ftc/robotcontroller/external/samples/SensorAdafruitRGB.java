@@ -35,10 +35,8 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 
-import com.qualcomm.ftccommon.DbgLog;
 import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
@@ -75,32 +73,33 @@ import com.qualcomm.robotcore.hardware.DigitalChannelController;
 //@Disabled                            // Comment this out to add to the opmode list
 public class SensorAdafruitRGB extends LinearOpMode {
 
-  ColorSensor sensorRGB;
+  ColorSensor sensorRGB1;
+  //ColorSensor sensorRGB2;
   DeviceInterfaceModule cdim;
 
   // we assume that the LED pin of the RGB sensor is connected to
   // digital port 5 (zero indexed).
-  static final int LED_CHANNEL = 5;
+ // static final int LED_CHANNEL = 5;
 
   @Override
   public void runOpMode() throws InterruptedException {
 
     // hsvValues is an array that will hold the hue, saturation, and value information.
-    float hsvValues[] = {0F,0F,0F};
+   // float hsvValues[] = {0F,0F,0F};
 
     // values is a reference to the hsvValues array.
-    final float values[] = hsvValues;
+   // final float values[] = hsvValues;
 
     // get a reference to the RelativeLayout so we can change the background
     // color of the Robot Controller app to match the hue detected by the RGB sensor.
-    final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
+    //final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
 
     // bPrevState and bCurrState represent the previous and current state of the button.
-    boolean bPrevState = false;
-    boolean bCurrState = false;
+//    boolean bPrevState = false;
+//    boolean bCurrState = false;
 
     // bLedOn represents the state of the LED.
-    boolean bLedOn = false;
+    //boolean bLedOn = false;
 
     // get a reference to our DeviceInterfaceModule object.
     cdim = hardwareMap.deviceInterfaceModule.get("dim");
@@ -108,13 +107,14 @@ public class SensorAdafruitRGB extends LinearOpMode {
     // set the digital channel to output mode.
     // remember, the Adafruit sensor is actually two devices.
     // It's an I2C sensor and it's also an LED that can be turned on or off.
-    cdim.setDigitalChannelMode(LED_CHANNEL, DigitalChannelController.Mode.OUTPUT);
+    //cdim.setDigitalChannelMode(LED_CHANNEL, DigitalChannelController.Mode.OUTPUT);
 
     // get a reference to our ColorSensor object.
-    sensorRGB = hardwareMap.colorSensor.get("color");
+    sensorRGB1 = hardwareMap.colorSensor.get("color1");
+   // sensorRGB2 = hardwareMap.colorSensor.get("color2");
 
     // turn the LED on in the beginning, just so user will know that the sensor is active.
-    cdim.setDigitalChannelState(LED_CHANNEL, bLedOn);
+    //cdim.setDigitalChannelState(LED_CHANNEL, bLedOn);
 
     // wait for the start button to be pressed.
     waitForStart();
@@ -124,42 +124,56 @@ public class SensorAdafruitRGB extends LinearOpMode {
     while (opModeIsActive())  {
 
       // check the status of the x button on gamepad.
-      bCurrState = gamepad1.x;
-
-      // check for button-press state transitions.
-      if ((bCurrState == true) && (bCurrState != bPrevState))  {
-
-        // button is transitioning to a pressed state. Toggle the LED.
-        bLedOn = !bLedOn;
-        cdim.setDigitalChannelState(LED_CHANNEL, bLedOn);
-      }
-
-      // update previous state variable.
-      bPrevState = bCurrState;
+//      bCurrState = gamepad1.x;
+//
+//      // check for button-press state transitions.
+//      if ((bCurrState == true) && (bCurrState != bPrevState))  {
+//
+//        // button is transitioning to a pressed state. Toggle the LED.
+//        bLedOn = !bLedOn;
+//        cdim.setDigitalChannelState(LED_CHANNEL, bLedOn);
+//      }
+//
+//      // update previous state variable.
+//      bPrevState = bCurrState;
 
       // convert the RGB values to HSV values.
-      Color.RGBToHSV((sensorRGB.red() * 255) / 800, (sensorRGB.green() * 255) / 800, (sensorRGB.blue() * 255) / 800, hsvValues);
+     // Color.RGBToHSV((sensorRGB1.red() * 255) / 800, (sensorRGB1.green() * 255) / 800, (sensorRGB1.blue() * 255) / 800, hsvValues);
+
 
       // send the info back to driver station using telemetry function.
-      telemetry.addData("LED", bLedOn ? "On" : "Off");
-      telemetry.addData("Clear", sensorRGB.alpha());
-      telemetry.addData("Red  ", sensorRGB.red());
-      telemetry.addData("Green", sensorRGB.green());
-      telemetry.addData("Blue ", sensorRGB.blue());
-      telemetry.addData("Hue", hsvValues[0]);
+      //telemetry.addData("LED", bLedOn ? "On" : "Off");
+      telemetry.addData("Clear 1", sensorRGB1.alpha());
+      telemetry.addData("Red  1", sensorRGB1.red());
+      telemetry.addData("Green 1", sensorRGB1.green());
+      telemetry.addData("Blue 1", sensorRGB1.blue());
+//      telemetry.addData("Clear 2", sensorRGB2.alpha());
+//      telemetry.addData("Red  2", sensorRGB2.red());
+//      telemetry.addData("Green 2", sensorRGB2.green());
+//      telemetry.addData("Blue 2", sensorRGB2.blue());
+      //telemetry.addData("Hue", hsvValues[0]);
 
 
 
       // change the background color to match the color detected by the RGB sensor.
       // pass a reference to the hue, saturation, and value array as an argument
       // to the HSVToColor method.
-      relativeLayout.post(new Runnable() {
-        public void run() {
-          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
-        }
-      });
+//      relativeLayout.post(new Runnable() {
+//        public void run() {
+//          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
+//        }
+//      });
 
       telemetry.update();
+
+
+      if(sensorRGB1.red()>sensorRGB1.blue()){
+        telemetry.addData("COLOR: ", "red");
+      }
+      if(sensorRGB1.red()<sensorRGB1.blue()){
+        telemetry.addData("COLOR: ", "blue");
+      }
+
       idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
     }
   }
