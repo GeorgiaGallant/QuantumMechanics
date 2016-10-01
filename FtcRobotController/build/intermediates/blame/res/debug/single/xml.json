@@ -20,6 +20,14 @@
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/src/main/res/xml/device_filter.xml"
     },
     {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/device_filter.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/src/main/res/xml/device_filter.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
+    },
+    {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbot.xml"
     },
@@ -36,16 +44,32 @@
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9legacybot.xml"
     },
     {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/squarebot.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
+    },
+    {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbot.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
     },
     {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbot.xml"
+    },
+    {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/squarebot.xml",
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9legacybot.xml"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/preferences.xml",
@@ -54,5 +78,9 @@
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/src/main/res/xml/preferences.xml"
     }
 ]

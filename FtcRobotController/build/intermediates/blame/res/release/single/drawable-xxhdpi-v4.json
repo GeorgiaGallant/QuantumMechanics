@@ -6,5 +6,9 @@
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xxhdpi-v4/ic_launcher.png",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xxhdpi-v4/ic_launcher.png",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/src/main/res/drawable-xxhdpi/ic_launcher.png"
     }
 ]

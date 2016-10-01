@@ -42,7 +42,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DigitalChannelController;
 
-@Autonomous(name = "Sensor: AdafruitRGB", group = "Sensor")
+@Autonomous(name = "Color One", group = "Sensor")
 //@Disabled                            // Comment this out to add to the opmode list
 public class ColorOne extends LinearOpMode {
 
@@ -79,10 +79,7 @@ public class ColorOne extends LinearOpMode {
 
 			// send the info back to driver station using telemetry function.
 
-			telemetry.addData("Clear 1", sensorRGB1.alpha());
-			telemetry.addData("Red  1", sensorRGB1.red());
-			telemetry.addData("Green 1", sensorRGB1.green());
-			telemetry.addData("Blue 1", sensorRGB1.blue());
+
 			//      telemetry.addData("Clear 2", sensorRGB2.alpha());
 			//      telemetry.addData("Red  2", sensorRGB2.red());
 			//      telemetry.addData("Green 2", sensorRGB2.green());
@@ -91,7 +88,10 @@ public class ColorOne extends LinearOpMode {
 
 
 
-
+			telemetry.addData("Clear 1", sensorRGB1.alpha());
+			telemetry.addData("Red  1", sensorRGB1.red());
+			telemetry.addData("Green 1", sensorRGB1.green());
+			telemetry.addData("Blue 1", sensorRGB1.blue());
 			if(sensorRGB1.red()>sensorRGB1.blue()){
 				telemetry.addData("COLOR: ", "red");
 			}

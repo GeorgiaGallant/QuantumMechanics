@@ -43,6 +43,16 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
     import com.qualcomm.robotcore.hardware.DcMotor;
     import com.qualcomm.robotcore.util.ElapsedTime;
+    import android.app.Activity;
+    import android.graphics.Color;
+    import android.view.View;
+
+    import com.qualcomm.ftcrobotcontroller.R;
+    import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+    import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+    import com.qualcomm.robotcore.hardware.ColorSensor;
+    import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
+    import com.qualcomm.robotcore.hardware.DigitalChannelController;
 
     /**
      * This file illustrates the concept of driving a path based on encoder counts.
@@ -71,24 +81,28 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
      */
 
-    @Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
+    @Autonomous(name="Encoder Test", group="Pushbot")
 //@Disabled
     public class EncoderTest extends LinearOpMode {
 
         /* Declare OpMode members. */
         //HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
         private ElapsedTime     runtime = new ElapsedTime();
-        DcMotor LFMotor = null;
-        DcMotor RFMotor = null;
-        DcMotor LBMotor = null;
-        DcMotor RBMotor = null;
+        DcMotor LFMotor;
+        DcMotor RFMotor;
+        DcMotor LBMotor;
+        DcMotor RBMotor;
         static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
-        static final double     DRIVE_GEAR_REDUCTION    = .025 ;     // This is < 1.0 if geared UP
+        static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
         static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
         static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
                 (WHEEL_DIAMETER_INCHES * 3.1415);
         static final double     DRIVE_SPEED             = 0.6;
         static final double     TURN_SPEED              = 0.5;
+
+        ColorSensor sensorRGB1;
+        //ColorSensor sensorRGB2;
+        DeviceInterfaceModule cdim;
 
         @Override
         public void runOpMode() throws InterruptedException {
@@ -99,9 +113,17 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          */
 
             // Send telemetry message to signify robot waiting;
+            cdim = hardwareMap.deviceInterfaceModule.get("dim");
+
+
+            // get a reference to our ColorSensor object.
+            sensorRGB1 = hardwareMap.colorSensor.get("color1");
             telemetry.addData("Status", "Resetting Encoders");    //
             telemetry.update();
-
+            LFMotor = hardwareMap.dcMotor.get("LFMotor");
+            LBMotor = hardwareMap.dcMotor.get("LBMotor");
+            RFMotor = hardwareMap.dcMotor.get("RFMotor");
+            RBMotor = hardwareMap.dcMotor.get("RBMotor");
             LFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             LBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -126,16 +148,27 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
             // Step through each leg of the path,
             // Note: Reverse movement is obtained by setting a negative distance (not speed)
-            encoderDrive(DRIVE_SPEED,  48,48,48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-            encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-            encoderDrive(DRIVE_SPEED, -24, -24, -24,-24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+            encoderDrive(DRIVE_SPEED,  15,-15,15, -15, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+            encoderDrive(TURN_SPEED,   -7, -7, -7, -7, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+            encoderDrive(DRIVE_SPEED, 18, -18, 18,-18, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+
+
+
+
+
+
+
+           // idle();
 
 //        robot.leftClaw.setPosition(1.0);            // S4: Stop and close the claw.
 //        robot.rightClaw.setPosition(0.0);
-            sleep(1000);     // pause for servos to move
+           // sleep(1000);     // pause for servos to move
 
             telemetry.addData("Path", "Complete");
             telemetry.update();
+
+
+
         }
 
         /*
@@ -195,6 +228,18 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                             RFMotor.getCurrentPosition(),
                             LBMotor.getCurrentPosition(),
                             RBMotor.getCurrentPosition());
+                    //telemetry.update();
+
+                    telemetry.addData("Clear 1", sensorRGB1.alpha());
+                    telemetry.addData("Red  1", sensorRGB1.red());
+                    telemetry.addData("Green 1", sensorRGB1.green());
+                    telemetry.addData("Blue 1", sensorRGB1.blue());
+                    if(sensorRGB1.red()>sensorRGB1.blue()){
+                        telemetry.addData("COLOR: ", "red");
+                    }
+                    if(sensorRGB1.red()<sensorRGB1.blue()){
+                        telemetry.addData("COLOR: ", "blue");
+                    }
                     telemetry.update();
 
                     // Allow time for other processes to run.

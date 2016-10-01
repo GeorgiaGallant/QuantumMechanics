@@ -4,29 +4,29 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="77132035329044"
-    token="4822368697521525913" >
+    timestamp="734844352678298"
+    token="-985223973610313759" >
 
     <task
         name="javac"
-        duration="556" />
+        duration="221" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="314" />
+        duration="10" />
     <task
         name="verifier"
-        duration="122" />
+        duration="1" />
 
     <artifact
-        location="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/outputs/apk/TeamCode-debug.apk"
+        location="/Users/student/QuantumMechanics/TeamCode/build/outputs/apk/TeamCode-debug.apk"
         type="MAIN" />
 
-    <build timestamp="77132035329044" >
+    <build timestamp="734844352678298" >
         <artifact
-            location="/Users/student/Documents/Programming/QuantumMechanics/TeamCode/build/outputs/apk/TeamCode-debug.apk"
+            location="/Users/student/QuantumMechanics/TeamCode/build/outputs/apk/TeamCode-debug.apk"
             type="MAIN" />
     </build>
 
