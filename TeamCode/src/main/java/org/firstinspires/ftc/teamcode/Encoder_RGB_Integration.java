@@ -80,9 +80,11 @@ public class Encoder_RGB_Integration extends LinearOpMode{
 
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  15,-15,15, -15, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   7, 7, 7, 7, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, 18, -18, 18,-18, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,  9,-9,9, -9, 5.0);  //drive forward
+        encoderDrive(TURN_SPEED,   4, 4, 4, 4, 4.0);   // turen right
+        encoderDrive(DRIVE_SPEED,  17,-17,17, -17, 5.0);  //drive forward
+        encoderDrive(TURN_SPEED,   2, 2, 2, 2, 4.0);// S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,4, -4, 4,-4, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
