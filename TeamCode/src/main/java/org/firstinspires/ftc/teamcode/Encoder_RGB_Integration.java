@@ -81,11 +81,25 @@ public class Encoder_RGB_Integration extends LinearOpMode{
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
         encoderDrive(DRIVE_SPEED,  15,-15,15, -15, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   -7, -7, -7, -7, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(TURN_SPEED,   7, 7, 7, 7, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         encoderDrive(DRIVE_SPEED, 18, -18, 18,-18, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
+        while(opModeIsActive()) {
+            telemetry.addData("Clear 1", sensorRGB1.alpha());
+                telemetry.addData("Red  1", sensorRGB1.red());
+                telemetry.addData("Green 1", sensorRGB1.green());
+                telemetry.addData("Blue 1", sensorRGB1.blue());
+                if(sensorRGB1.red()>sensorRGB1.blue()){
+                    telemetry.addData("COLOR: ", "red");
+                }
+                else {
+                    telemetry.addData("COLOR: ", "blue");
+                }
+                telemetry.update();
+            idle();
+        }
     }
     public void encoderDrive(double speed,
                              double LFInches, double RFInches, double LBInches, double RBInches,
@@ -130,25 +144,25 @@ public class Encoder_RGB_Integration extends LinearOpMode{
                     (LFMotor.isBusy() && RFMotor.isBusy() && LBMotor.isBusy() && RBMotor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1",  "Running to %7d :%7d", newLFTarget,  newRFTarget, newLBTarget, newRBTarget);
-                telemetry.addData("Path2",  "Running at %7d :%7d",
-                        LFMotor.getCurrentPosition(),
-                        RFMotor.getCurrentPosition(),
-                        LBMotor.getCurrentPosition(),
-                        RBMotor.getCurrentPosition());
+//                telemetry.addData("Path1",  "Running to %7d :%7d", newLFTarget,  newRFTarget, newLBTarget, newRBTarget);
+//                telemetry.addData("Path2",  "Running at %7d :%7d",
+//                        LFMotor.getCurrentPosition(),
+//                        RFMotor.getCurrentPosition(),
+//                        LBMotor.getCurrentPosition(),
+//                        RBMotor.getCurrentPosition());
                 //telemetry.update();
-
-                telemetry.addData("Clear 1", sensorRGB1.alpha());
-                telemetry.addData("Red  1", sensorRGB1.red());
-                telemetry.addData("Green 1", sensorRGB1.green());
-                telemetry.addData("Blue 1", sensorRGB1.blue());
-                if(sensorRGB1.red()>sensorRGB1.blue()){
-                    telemetry.addData("COLOR: ", "red");
-                }
-                if(sensorRGB1.red()<sensorRGB1.blue()){
-                    telemetry.addData("COLOR: ", "blue");
-                }
-                telemetry.update();
+//
+//                telemetry.addData("Clear 1", sensorRGB1.alpha());
+//                telemetry.addData("Red  1", sensorRGB1.red());
+//                telemetry.addData("Green 1", sensorRGB1.green());
+//                telemetry.addData("Blue 1", sensorRGB1.blue());
+//                if(sensorRGB1.red()>sensorRGB1.blue()){
+//                    telemetry.addData("COLOR: ", "red");
+//                }
+//                else {
+//                    telemetry.addData("COLOR: ", "blue");
+//                }
+//                telemetry.update();
 
                 // Allow time for other processes to run.
                 idle();
