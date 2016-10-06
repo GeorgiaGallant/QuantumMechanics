@@ -50,76 +50,15 @@ import com.qualcomm.robotcore.hardware.LightSensor;
 //@Disabled                            // Comment this out to add to the opmode list
 public class LineSensor extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
-
-
         DeviceInterfaceModule cdim = hardwareMap.deviceInterfaceModule.get("dim");
         //cdim.setDigitalChannelMode(0,Mode.INPUT)
         LightSensor Linesensor = hardwareMap.lightSensor.get("light");
         double value = Linesensor.getLightDetected();
-        telemetry.addData("count", currentCount);
-        telemetry.addData("elapsedTime", "%.3f", elapsedSeconds);
+        telemetry.addData("lineSensor", value );
         telemetry.update();
 
     }
 
-
-
-    // we assume that the LED pin of the RGB sensor is connected to
-    // digital port 5 (zero indexed).
-    // static final int LED_CHANNEL = 5;
-
-    @Override
-    public void runOpMode() throws InterruptedException {
-
-        // hsvValues is an array that will hold the hue, saturation, and value information.
-        // float hsvValues[] = {0F,0F,0F};
-
-
-        cdim = hardwareMap.deviceInterfaceModule.get("dim");
-
-
-        // get a reference to our ColorSensor object.
-        sensorRGB1 = hardwareMap.colorSensor.get("color1");
-        // sensorRGB2 = hardwareMap.colorSensor.get("color2");
-
-
-        // wait for the start button to be pressed.
-        waitForStart();
-
-        // loop and read the RGB data.
-        // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
-        while (opModeIsActive())  {
-
-
-            // send the info back to driver station using telemetry function.
-
-
-            //      telemetry.addData("Clear 2", sensorRGB2.alpha());
-            //      telemetry.addData("Red  2", sensorRGB2.red());
-            //      telemetry.addData("Green 2", sensorRGB2.green());
-            //      telemetry.addData("Blue 2", sensorRGB2.blue());
-            //telemetry.addData("Hue", hsvValues[0]);
-
-
-
-            telemetry.addData("Clear 1", sensorRGB1.alpha());
-            telemetry.addData("Red  1", sensorRGB1.red());
-            telemetry.addData("Green 1", sensorRGB1.green());
-            telemetry.addData("Blue 1", sensorRGB1.blue());
-            if(sensorRGB1.red()>sensorRGB1.blue()){
-                telemetry.addData("COLOR: ", "red");
-            }
-            if(sensorRGB1.red()<sensorRGB1.blue()){
-                telemetry.addData("COLOR: ", "blue");
-            }
-            telemetry.update();
-
-
-
-
-            idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop help me
-        }
-    }
 }
 
 
