@@ -4,12 +4,12 @@
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/nxtstartupsound.wav"
     },
     {
-        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/raw/texture_vertex_shader.glsl",
-        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/texture_vertex_shader.glsl"
-    },
-    {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/raw/cube_mesh_vertex_shader.glsl",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/cube_mesh_vertex_shader.glsl"
+    },
+    {
+        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/raw/texture_vertex_shader.glsl",
+        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/texture_vertex_shader.glsl"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/raw/color_fragment_shader.glsl",

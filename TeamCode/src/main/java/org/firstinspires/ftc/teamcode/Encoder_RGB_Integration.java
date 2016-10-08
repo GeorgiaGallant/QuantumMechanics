@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import android.app.Activity;
@@ -12,6 +13,8 @@ import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DigitalChannelController;
+import com.qualcomm.robotcore.hardware.Servo;
+
 /**
  * Created by student on 10/6/16.
  */
@@ -31,6 +34,7 @@ public class Encoder_RGB_Integration extends LinearOpMode{
     static final double     DRIVE_SPEED             = 0.6;
     static final double     TURN_SPEED              = 0.5;
 
+    Servo   servo;
     ColorSensor sensorRGB1;
     //ColorSensor sensorRGB2;
     DeviceInterfaceModule cdim;
@@ -56,6 +60,9 @@ public class Encoder_RGB_Integration extends LinearOpMode{
         LBMotor = hardwareMap.dcMotor.get("LBMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
         RBMotor = hardwareMap.dcMotor.get("RBMotor");
+
+        servo = hardwareMap.servo.get("buttonPusher");
+
         LFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         LBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -82,26 +89,50 @@ public class Encoder_RGB_Integration extends LinearOpMode{
         // Note: Reetting a negative distance (not speed)
         encoderDrive(DRIVE_SPEED,  9,-9,9, -9, 5.0);  //drive forward
         encoderDrive(TURN_SPEED,   4, 4, 4, 4, 4.0);   // turen right
-        encoderDrive(DRIVE_SPEED,  17,-17,17, -17, 5.0);  //drive forward
-        encoderDrive(TURN_SPEED,   2, 2, 2, 2, 4.0);// S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED,4, -4, 4,-4, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,  19.3,-19.3,19.3, -19.3, 5.0);  //drive forward
+        encoderDrive(TURN_SPEED,   2.35, 2.35, 2.35, 2.35, 4.0);// S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,  3.0,-3.0,3.0, -3.0, 5.0);  //drive forward
+
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
-        while(opModeIsActive()) {
+        int red = 0;
+        int blue = 0;
+
+       // while(opModeIsActive()) {
             telemetry.addData("Clear 1", sensorRGB1.alpha());
                 telemetry.addData("Red  1", sensorRGB1.red());
                 telemetry.addData("Green 1", sensorRGB1.green());
                 telemetry.addData("Blue 1", sensorRGB1.blue());
                 if(sensorRGB1.red()>sensorRGB1.blue()){
                     telemetry.addData("COLOR: ", "red");
+                    servo.setPosition(170);
+                    sleep(100);
+
+                    // red++;
                 }
                 else {
                     telemetry.addData("COLOR: ", "blue");
+                    servo.setPosition(-170);
+                    sleep(100);
+                   // blue++;
                 }
                 telemetry.update();
             idle();
-        }
+       // }
+//        if(red > blue){
+//            servo.setPosition(170);
+//        }
+//        if(blue >  red){
+//            servo.setPosition(170);
+//        }
+//        while(opModeIsActive()){
+//            telemetry.addData("Red: ", red);
+//            telemetry.addData("Blue: ", blue);
+//        }
+//        idle();
+
     }
     public void encoderDrive(double speed,
                              double LFInches, double RFInches, double LBInches, double RBInches,
