@@ -88,7 +88,7 @@ public class Encoder_RGB_Integration extends LinearOpMode{
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
         encoderDrive(DRIVE_SPEED,  9,-9,9, -9, 5.0);  //drive forward
-        encoderDrive(TURN_SPEED,   4, 4, 4, 4, 4.0);   // turen right
+        encoderDrive(TURN_SPEED,   4, 4, 4, 4, 4.0);   // turn right
         encoderDrive(DRIVE_SPEED,  19.3,-19.3,19.3, -19.3, 5.0);  //drive forward
         encoderDrive(TURN_SPEED,   2.35, 2.35, 2.35, 2.35, 4.0);// S2: Turn Right 12 Inches with 4 Sec timeout
         encoderDrive(DRIVE_SPEED,  3.0,-3.0,3.0, -3.0, 5.0);  //drive forward
