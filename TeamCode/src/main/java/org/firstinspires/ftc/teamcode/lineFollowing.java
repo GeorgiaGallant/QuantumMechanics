@@ -37,12 +37,14 @@ public class lineFollowing extends LinearOpMode {
         // bLedOn represents the state of the LED.
         boolean bLedOn = true;
 
-        double LPower = .2;
-        double RPower = .2;
+        double LPower = 0.2;
+        double RPower = 0.2;
+        double Kp = (1-LPower)/(25);
         DcMotor LFMotor;
         DcMotor RFMotor;
         DcMotor LBMotor;
         DcMotor RBMotor;
+        double error = 0.0;
 
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         LBMotor = hardwareMap.dcMotor.get("LBMotor");
@@ -83,41 +85,46 @@ public class lineFollowing extends LinearOpMode {
             Color.RGBToHSV(colorSensor.red(), colorSensor.green(), colorSensor.blue(), hsvValues);
 
             // send the info back to driver station using telemetry function.
-            telemetry.addData("LED", bLedOn ? "On" : "Off");
-            telemetry.addData("Clear", colorSensor.alpha());
-            telemetry.addData("Red  ", colorSensor.red());
-            telemetry.addData("Green", colorSensor.green());
-            telemetry.addData("Blue ", colorSensor.blue());
-            telemetry.addData("Hue", hsvValues[0]);
+//            telemetry.addData("LED", bLedOn ? "On" : "Off");
+//            telemetry.addData("Clear", colorSensor.alpha());
+//            telemetry.addData("Red  ", colorSensor.red());
+//            telemetry.addData("Green", colorSensor.green());
+//            telemetry.addData("Blue ", colorSensor.blue());
+//            telemetry.addData("Hue", hsvValues[0]);
+            telemetry.addData("Kp: ",  Kp);
+            LPower = .2;
+            RPower = .2;
 
-
-
+            error = colorSensor.alpha() - 25;
+            telemetry.addData("ERROR: ", error);
             if(colorSensor.alpha() > 30){
                 telemetry.addData("RIGHT", 0);
-                LPower = .4;
-                RPower = -.4;
+                LPower = LPower * (1 + (Kp * error));
+                telemetry.addData("LPower: ", LPower);
+                RPower = RPower * (1 - (Kp * error));
+                telemetry.addData("RPower: ", RPower);
+
             }
             else if(colorSensor.alpha() < 20){
                 telemetry.addData("LEFT", 0);
-                RPower = .4;
-                LPower = -.4;
+                RPower = RPower * (1 - (Kp * error));
+                telemetry.addData("RPower: ", RPower);
+                LPower = LPower * (1 + (Kp * error));
+                telemetry.addData("LPower: ", LPower);
+
             }
             else{
                 telemetry.addData("STRAIGHT", 0);
-                LPower = .35;
-                RPower = .35;
+                LPower = .2;
+                RPower = .2;
             }
 
-            LFMotor.setPower(-LPower);
+            LFMotor.setPower(LPower);
             RFMotor.setPower(-RPower);
-            RBMotor.setPower(RPower);
+            RBMotor.setPower(-RPower);
             LBMotor.setPower(LPower);
-
-            LFMotor.setPower(0);
-            RFMotor.setPower(0);
-            RBMotor.setPower(0);
-            LBMotor.setPower(0);
             sleep(5);
+
             // change the background color to match the color detected by the RGB sensor.
             // pass a reference to the hue, saturation, and value array as an argument
             // to the HSVToColor method.
