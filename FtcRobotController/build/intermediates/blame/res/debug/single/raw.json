@@ -8,12 +8,12 @@
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/nxtstartupsound.wav"
     },
     {
-        "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
-        "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
-    },
-    {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
+    },
+    {
+        "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
+        "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
     },
     {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
@@ -36,12 +36,12 @@
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/texture_fragment_shader.glsl"
     },
     {
-        "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/cube_mesh_vertex_shader.glsl",
-        "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/cube_mesh_vertex_shader.glsl"
-    },
-    {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/color_fragment_shader.glsl",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/color_fragment_shader.glsl"
+    },
+    {
+        "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/cube_mesh_vertex_shader.glsl",
+        "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/RobotCore-release/res/raw/cube_mesh_vertex_shader.glsl"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/texture_fragment_shader.glsl",
