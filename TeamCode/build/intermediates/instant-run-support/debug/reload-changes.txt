@@ -1,2 +1,2 @@
-CHANGED,/Users/student/Desktop/QM/QuantumMechanics/TeamCode/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/org/firstinspires/ftc/teamcode/Integration_LF_RGB_Encoder$override.class
-CHANGED,/Users/student/Desktop/QM/QuantumMechanics/TeamCode/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
+CHANGED,/Users/student/Desktop/QuantumMechanics/TeamCode/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
+CHANGED,/Users/student/Desktop/QuantumMechanics/TeamCode/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/org/firstinspires/ftc/teamcode/GyroTester$override.class
