@@ -53,6 +53,7 @@ public class GyroTester extends LinearOpMode{
 //            Thread.sleep(50);
 //            idle();
 //        }
+//        Gyro g = new Gyro(hardwareMap);
         cdim = hardwareMap.deviceInterfaceModule.get("dim");
 
 

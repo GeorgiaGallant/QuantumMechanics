@@ -18,14 +18,11 @@ public class Gyro{
     private DcMotor RBMotor;
     private HardwareMap hardwareMap;
 
-    private OpMode mode;
-
     /**
-     * @param mode The current opmode of the class
+     * @param hardwareMap
      */
-    public Gyro(OpMode mode){
-        this.mode = mode;
-        this.hardwareMap = mode.hardwareMap;
+    public Gyro(HardwareMap hardwareMap){
+        this.hardwareMap = hardwareMap;
         setupDevices();
     }
 
@@ -42,8 +39,6 @@ public class Gyro{
      */
     public void calibrate(){
         gyro.calibrate();
-        mode.telemetry.addData("GYRO: ", "Gyro is calibrating. DO NOT MOVE!");
-        mode.telemetry.update();
     }
 
     /**
@@ -84,7 +79,6 @@ public class Gyro{
                 }
             }
         }
-
     }
 
     private void setupDevices(){
