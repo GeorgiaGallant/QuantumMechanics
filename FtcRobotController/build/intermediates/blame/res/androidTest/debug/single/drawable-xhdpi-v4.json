@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_menu.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/icon_menu.png"
+    },
+    {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_launcher.png",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
     },
@@ -30,6 +34,14 @@
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_menu.png",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/icon_menu.png"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_robotcontroller.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/icon_robotcontroller.png"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
     },
     {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_robotcontroller.png",

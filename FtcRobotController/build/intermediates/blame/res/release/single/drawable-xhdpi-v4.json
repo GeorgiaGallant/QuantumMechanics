@@ -1,11 +1,19 @@
 [
     {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_menu.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/icon_menu.png"
+    },
+    {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_robotcontroller.png",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_menu.png",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/icon_menu.png"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_robotcontroller.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
@@ -46,5 +54,9 @@
     {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
         "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
     }
 ]
