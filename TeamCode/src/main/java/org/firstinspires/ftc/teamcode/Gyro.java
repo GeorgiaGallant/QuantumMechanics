@@ -54,6 +54,39 @@ public class Gyro{
         return gyro.isCalibrating();
     }
 
+    public void turnBy(int degree){
+        //counterclockwise is positive
+        int angleZ = gyro.getIntegratedZValue();
+        double motor_power = 1;
+        if(angleZ < degree) {
+            while (angleZ < degree) {
+                LFMotor.setPower(-motor_power);
+                LBMotor.setPower(-motor_power);
+                RFMotor.setPower(-motor_power);
+                RBMotor.setPower(-motor_power);
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else{
+            while (angleZ > degree) {
+                LFMotor.setPower(motor_power);
+                LBMotor.setPower(motor_power);
+                RFMotor.setPower(motor_power);
+                RBMotor.setPower(motor_power);
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
     private void setupDevices(){
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         LBMotor = hardwareMap.dcMotor.get("LBMotor");
