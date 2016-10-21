@@ -55,6 +55,7 @@ public class GyroTester extends LinearOpMode{
 //        }
 //        Gyro g = new Gyro(hardwareMap);
         cdim = hardwareMap.deviceInterfaceModule.get("dim");
+        Gyro g = new Gyro(hardwareMap);
 
 
         // get a reference to our ColorSensor object.
@@ -95,9 +96,9 @@ public class GyroTester extends LinearOpMode{
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
         encoderDrive(DRIVE_SPEED,  9,-9,9, -9, 5.0);  //drive forward
-//        g.turnBy(-30);
+        g.turnBy(-30);
         encoderDrive(DRIVE_SPEED,  19.3,-19.3,19.3, -19.3, 5.0);  //drive forward
-//        g.turnBy(-90);
+        g.turnBy(-90);
         encoderDrive(DRIVE_SPEED,  3.0,-3.0,3.0, -3.0, 5.0);  //drive forward
 
 
