@@ -1,18 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import android.app.Activity;
-import android.graphics.Color;
-import android.view.View;
-import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.DigitalChannelController;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -36,30 +29,11 @@ public class GyroTester extends LinearOpMode{
     static final double     TURN_SPEED              = 0.5;
 
     Servo   servo;
-    ColorSensor sensorRGB1;
-    //ColorSensor sensorRGB2;
     DeviceInterfaceModule cdim;
     @Override
     public void runOpMode() throws InterruptedException {
-
-        /*
-         * Initialize the drive system variables.
-         * The init() method of the hardware class does all the work here
-         */
-
-        // Send telemetry message to signify robot waiting;
-//        g.calibrate();
-//        while (g.isCalibrating()){
-//            Thread.sleep(50);
-//            idle();
-//        }
-//        Gyro g = new Gyro(hardwareMap);
         cdim = hardwareMap.deviceInterfaceModule.get("dim");
-        Gyro g = new Gyro(hardwareMap);
-
-
-        // get a reference to our ColorSensor object.
-        sensorRGB1 = hardwareMap.colorSensor.get("color1");
+        Gyro g = new Gyro(this);
 
         //Resetting encoders
         telemetry.addData("Status", "Resetting Encoders");    //
@@ -82,65 +56,10 @@ public class GyroTester extends LinearOpMode{
         LBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         RBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        // Send telemetry message to indicate successful Encoder reset
-        telemetry.addData("Path0",  "Starting at %7d :%7d",
-                RFMotor.getCurrentPosition(),
-                RBMotor.getCurrentPosition(),
-                RBMotor.getCurrentPosition(),
-                LFMotor.getCurrentPosition());
-        telemetry.update();
-
-        // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path,verse movement is obtained by s
-        // Note: Reetting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  9,-9,9, -9, 5.0);  //drive forward
-        g.turnBy(-30);
-        encoderDrive(DRIVE_SPEED,  19.3,-19.3,19.3, -19.3, 5.0);  //drive forward
-        g.turnBy(-90);
-        encoderDrive(DRIVE_SPEED,  3.0,-3.0,3.0, -3.0, 5.0);  //drive forward
-
-
-
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        int red = 0;
-        int blue = 0;
-
-        // while(opModeIsActive()) {
-        telemetry.addData("Clear 1", sensorRGB1.alpha());
-        telemetry.addData("Red  1", sensorRGB1.red());
-        telemetry.addData("Green 1", sensorRGB1.green());
-        telemetry.addData("Blue 1", sensorRGB1.blue());
-        if(sensorRGB1.red()>sensorRGB1.blue()){
-            telemetry.addData("COLOR: ", "red");
-            servo.setPosition(170);
-            sleep(100);
-
-            // red++;
-        }
-        else {
-            telemetry.addData("COLOR: ", "blue");
-            servo.setPosition(-170);
-            sleep(100);
-            // blue++;
-        }
-        telemetry.update();
-        idle();
-        // }
-//        if(red > blue){
-//            servo.setPosition(170);
-//        }
-//        if(blue >  red){
-//            servo.setPosition(170);
-//        }
-//        while(opModeIsActive()){
-//            telemetry.addData("Red: ", red);
-//            telemetry.addData("Blue: ", blue);
-//        }
-//        idle();
-
+        g.stayStraight();
+        g.turnTo(30);
     }
     public void encoderDrive(double speed,
                              double LFInches, double RFInches, double LBInches, double RBInches,
