@@ -20,12 +20,12 @@
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
     },
     {
-        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/device_filter.xml",
-        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/xml/device_filter.xml"
-    },
-    {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/squarebot.xml",
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/device_filter.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/xml/device_filter.xml"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/preferences.xml",
@@ -40,12 +40,12 @@
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/bundles/debug/res/xml/device_filter.xml"
     },
     {
-        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/pushbotsens.xml",
-        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
-    },
-    {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/k9usbbot.xml",
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/pushbotsens.xml",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/androidTest/debug/xml/device_filter.xml",
