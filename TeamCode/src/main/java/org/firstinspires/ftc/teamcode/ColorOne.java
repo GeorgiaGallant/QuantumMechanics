@@ -41,6 +41,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DigitalChannelController;
+import com.qualcomm.robotcore.hardware.I2cAddr;
 
 @Autonomous(name = "Color One", group = "Sensor")
 //@Disabled                            // Comment this out to add to the opmode list
@@ -63,9 +64,12 @@ public class ColorOne extends LinearOpMode {
 
 		cdim = hardwareMap.deviceInterfaceModule.get("dim");
 
-
 		// get a reference to our ColorSensor object.
-		sensorRGB1 = hardwareMap.colorSensor.get("color1");
+		sensorRGB1 = hardwareMap.colorSensor.get("color sensor beacon");
+		sensorRGB1.setI2cAddress(I2cAddr.create8bit(0x5c));
+		sensorRGB1.enableLed(false);
+
+
 		// sensorRGB2 = hardwareMap.colorSensor.get("color2");
 
 
@@ -92,12 +96,6 @@ public class ColorOne extends LinearOpMode {
 			telemetry.addData("Red  1", sensorRGB1.red());
 			telemetry.addData("Green 1", sensorRGB1.green());
 			telemetry.addData("Blue 1", sensorRGB1.blue());
-			if(sensorRGB1.red()>sensorRGB1.blue()){
-				telemetry.addData("COLOR: ", "red");
-			}
-			if(sensorRGB1.red()<sensorRGB1.blue()){
-				telemetry.addData("COLOR: ", "blue");
-			}
 			telemetry.update();
 
 

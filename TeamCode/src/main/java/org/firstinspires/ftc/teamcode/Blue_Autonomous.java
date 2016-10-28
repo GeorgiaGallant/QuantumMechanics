@@ -30,7 +30,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * Created by student on 10/6/16.
  */
-@Autonomous(name="RGB + Encoder + LF", group="RGB + Encoder")
+@Autonomous(name="Blue Autonomous", group="RGB + Encoder")
 
 public class Blue_Autonomous extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();
@@ -44,7 +44,7 @@ public class Blue_Autonomous extends LinearOpMode{
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double     DRIVE_SPEED_FAST             = 0.6;
-    static final double     DRIVE_SPEED_SLOW             = 0.3;
+    static final double     DRIVE_SPEED_SLOW             = 0.2;
     static final double     TURN_SPEED              = 0.5;
 
     Servo   servo;
@@ -72,13 +72,17 @@ public class Blue_Autonomous extends LinearOpMode{
 
 
         // get a reference to our ColorSensor object.
-        colorSensorL = hardwareMap.colorSensor.get("color sensor left");
+    //    colorSensorL = hardwareMap.colorSensor.get("color sensor left");
         colorSensorR = hardwareMap.colorSensor.get("color sensor right");
         colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
 
 
-        colorSensorL.setI2cAddress(I2cAddr.create8bit(0x4c));
+        colorSensorR.setI2cAddress(I2cAddr.create8bit(0x4c));
         colorSensorF.setI2cAddress(I2cAddr.create8bit(0x5c));
+
+
+        colorSensorF.enableLed(false);
+        colorSensorR.enableLed(true);
 
         // turn the LED on in the beginning, just so user will know that the sensor is active.
 
@@ -131,38 +135,20 @@ public class Blue_Autonomous extends LinearOpMode{
 
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
+        telemetry.addData("STARTED", 6666);
         encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
         encoderDrive(TURN_SPEED, 4.1, 4.1, 4.1, 4.1, 4.0);   // turn right
         while (colorSensorR.alpha() < 40) {
-            telemetry.addData("color", colorSensorL.alpha());
+//            telemetry.addData("color", colorSensorL.alpha());
             telemetry.addData("color", colorSensorR.alpha());
             telemetry.update();
             LFMotor.setPower(.2);
             LBMotor.setPower(.2);
             RFMotor.setPower(-.2);
             RBMotor.setPower(-.2);
-            sleep(5);
+            sleep(50);
             idle();
         }
-
-//        while (colorSensorL.alpha() < 40) {
-//            telemetry.addData("color", colorSensorL.alpha());
-//            telemetry.addData("color", colorSensorR.alpha());
-//            telemetry.update();
-//            LFMotor.setPower(.2);
-//            LBMotor.setPower(.2);
-//            RFMotor.setPower(.2);
-//            RBMotor.setPower(.2);
-//            sleep(5);
-//            idle();
-//        }
-//
-
-
-        //encoderDrive(TURN_SPEED, .5,.5,.5,.5,4.0);
-        //END OF ENCODER CODE
-
-
 
 
         // NOW WE SHOULD DO LINE FOLLOWING
@@ -171,42 +157,44 @@ public class Blue_Autonomous extends LinearOpMode{
         RFMotor.setPower(0);
         RBMotor.setPower(0);
         sleep(50);
-        boolean linef = true;
 
-        while(linef==true) {
+        while(colorSensorF.alpha()<2) {
+            telemetry.addData("HEELP", getRuntime());
+            telemetry.update();
             LPower = .2;
             RPower = .2;
 
-            telemetry.addData("Left sensor ", colorSensorL.alpha());
+       //     telemetry.addData("Left sensor ", colorSensorL.alpha());
             telemetry.addData("Right sensor", colorSensorR.alpha());
             telemetry.update();
 
 
             // 50 is white 0 is black
             errorR = colorSensorR.alpha() - 25;
-            errorL = colorSensorL.alpha() - 25;
-            telemetry.addData("ERROR: ", errorR);
+            //errorL = colorSensorL.alpha() - 25;
             if (colorSensorR.alpha() > 30) {
+                telemetry.addData("RIGHT", 2);
+                telemetry.update();
                 //the right sensor is seeing white it needs
-
-
                 LPower = LPower * (1 + (Kp * errorR));
-                telemetry.addData("LPower: ", LPower);
+                //telemetry.addData("LPower: ", LPower);
                 RPower = RPower * (1 - (Kp * errorR));
-                telemetry.addData("RPower: ", RPower);
+               // telemetry.addData("RPower: ", RPower);
 
 
             } else if (colorSensorR.alpha() < 20) {
                 //the right sensor is seeing grey needs to go left
-                telemetry.addData("LEFT", 0);
+                telemetry.addData("LEFT", 2);
+                telemetry.update();
                 RPower = RPower * (1 - (Kp * errorR));
-                telemetry.addData("RPower: ", RPower);
+               // telemetry.addData("RPower: ", RPower);
                 LPower = LPower * (1 + (Kp * errorR));
-                telemetry.addData("LPower: ", LPower);
+               // telemetry.addData("LPower: ", LPower);
 
             } else {
                 //both are in between 20 and 30 so both are seeing the line
-                telemetry.addData("STRAIGHT", 0);
+                telemetry.addData("STRAIGHT", 2);
+                telemetry.update();
                 LPower = .2;
                 RPower = .2;
             }
@@ -215,63 +203,66 @@ public class Blue_Autonomous extends LinearOpMode{
             RFMotor.setPower(-RPower);
             RBMotor.setPower(-RPower);
             LBMotor.setPower(LPower);
-            sleep(5);
+            sleep(50);
 
 
-            if (colorSensorL.alpha() > 30) {
-                //the left sensor is seeing white so it needs to go left
-                LPower = LPower * (1 + (Kp * errorL));
-                telemetry.addData("LPower: ", LPower);
-                RPower = RPower * (1 - (Kp * errorL));
-                telemetry.addData("RPower: ", RPower);
 
+//            if (colorSensorL.alpha() > 30) {
+//                //the left sensor is seeing white so it needs to go left
+//                LPower = LPower * (1 + (Kp * errorL));
+//                telemetry.addData("LPower: ", LPower);
+//                RPower = RPower * (1 - (Kp * errorL));
+//                telemetry.addData("RPower: ", RPower);
+//
+//
+//            } else if (colorSensorL.alpha() < 20) {
+//                //the left sensor os seeing grey so it needs to go right
+//                RPower = RPower * (1 - (Kp * errorL));
+//                telemetry.addData("RPower: ", RPower);
+//                LPower = LPower * (1 + (Kp * errorL));
+//                telemetry.addData("LPower: ", LPower);
+//            } else {
+//                //both are in between 20 and 30 so both are seeing the line
+//                telemetry.addData("STRAIGHT", 0);
+//                LPower = .2;
+//                RPower = .2;
+//            }
+//
+//            LFMotor.setPower(LPower);
+//            RFMotor.setPower(-RPower);
+//            RBMotor.setPower(-RPower);
+//            LBMotor.setPower(LPower);
+//            sleep(5);
 
-            } else if (colorSensorL.alpha() < 20) {
-                //the left sensor os seeing grey so it needs to go right
-                RPower = RPower * (1 - (Kp * errorL));
-                telemetry.addData("RPower: ", RPower);
-                LPower = LPower * (1 + (Kp * errorL));
-                telemetry.addData("LPower: ", LPower);
-            } else {
-                //both are in between 20 and 30 so both are seeing the line
-                telemetry.addData("STRAIGHT", 0);
-                LPower = .2;
-                RPower = .2;
+            idle();
             }
 
-            LFMotor.setPower(LPower);
-            RFMotor.setPower(-RPower);
-            RBMotor.setPower(-RPower);
-            LBMotor.setPower(LPower);
-            sleep(5);
+            LFMotor.setPower(0);
+            RFMotor.setPower(0);
+            RBMotor.setPower(0);
+            LBMotor.setPower(0);
+            sleep(50);
 
-            if (getRuntime() > 9.4) {
-                LFMotor.setPower(0);
-                RFMotor.setPower(0);
-                RBMotor.setPower(0);
-                LBMotor.setPower(0);
-                sleep(50);
-                linef = false;
-                idle();
-            }
-        }
 
-            encoderDrive(DRIVE_SPEED_FAST, -1, 1, -1, 1, 5.0);  //drive forward
 
-            int red =0;
+            idle();
+        int red =0;
         int blue = 0;
 
-            for(int x =0; x<100; x++) {
+        for(int x =0; x<100; x++) {
 
-                if (colorSensorF.red() > colorSensorF.blue()) {
-                    red++;
-                } else {
-                    blue++;
-                }
-
-
+            if (colorSensorF.red() > colorSensorF.blue()) {
+                red++;
+            } else {
+                blue++;
             }
 
+
+        }
+        encoderDrive(DRIVE_SPEED_FAST, -1, 1, -1, 1, 5.0);  //drive forward
+        telemetry.addData("red",  red);
+        telemetry.addData("bLue", blue);
+        telemetry.update();
         if(red>blue){
             telemetry.addData("COLOR: ", "red");
             servo.setPosition(-1);
@@ -286,49 +277,16 @@ public class Blue_Autonomous extends LinearOpMode{
             telemetry.update();
 
         }
+        encoderDrive(DRIVE_SPEED_SLOW, 4, -4, 4, -4, 5.0);  //drive forward
 
-
-
-        //
-//        telemetry.addData("Path", "Complete");
-//        telemetry.update();
-//        int red = 0;
-//        int blue = 0;
-//
-//        // while(opModeIsActive()) {
-//        telemetry.addData("Clear 1", sensorRGB1.alpha());
-//        telemetry.addData("Red  1", sensorRGB1.red());
-//        telemetry.addData("Green 1", sensorRGB1.green());
-//        telemetry.addData("Blue 1", sensorRGB1.blue());
-//        if(sensorRGB1.red()>sensorRGB1.blue()){
-//            telemetry.addData("COLOR: ", "red");
-//            servo.setPosition(170);
-//            sleep(100);
-//
-//            // red++;
-//        }
-//        else {
-//            telemetry.addData("COLOR: ", "blue");
-//            servo.setPosition(-170);
-//            sleep(100);
-//            // blue++;
-//        }
-//        telemetry.update();
-//        idle();
-        // }
-//        if(red > blue){
-//            servo.setPosition(170);
-//        }
-//        if(blue >  red){
-//            servo.setPosition(170);
-//        }
-//        while(opModeIsActive()){
-//            telemetry.addData("Red: ", red);
-//            telemetry.addData("Blue: ", blue);
-//        }
-//        idle();
 
     }
+
+
+
+
+
+
 
 
     public void encoderDrive(double speed,
