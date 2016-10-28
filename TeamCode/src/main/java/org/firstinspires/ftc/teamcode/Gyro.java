@@ -18,10 +18,9 @@ public class Gyro{
     private DcMotor LBMotor;
     private DcMotor RBMotor;
     private HardwareMap hardwareMap;
-    private int tolerance = 0;
+    private int tolerance = 1;
     private LinearOpMode opMode;
     private double motorPower = 0.3;
-    private double motorPower2 = 0.1;
     private double angle = 0;
 
     public Gyro(LinearOpMode opMode){
@@ -54,43 +53,27 @@ public class Gyro{
     }
 
     public void turnTo(int degree) {
-        if (gyro.getIntegratedZValue() > degree + tolerance) { // turn right
-            while (gyro.getIntegratedZValue() > degree + tolerance) {
-                LFMotor.setPower(motorPower);
-                LBMotor.setPower(motorPower);
-                RFMotor.setPower(motorPower);
-                RBMotor.setPower(motorPower);
-                try {
-                    opMode.idle();
-                } catch (InterruptedException e) {
-                    resetMotorPower();
-                    e.printStackTrace();
-                }
-                try {
-                    opMode.sleep(500);
-                    opMode.idle();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        while(gyro.getIntegratedZValue() > degree+tolerance || gyro.getIntegratedZValue() < degree-tolerance){
+            double currentAngle = gyro.getIntegratedZValue();
+            double power = 0;
+
+            if(currentAngle < degree-tolerance) power = -motorPower;
+            else if(currentAngle > degree + tolerance) power = motorPower;
+
+
+            LFMotor.setPower(power);
+            LBMotor.setPower(power);
+            RFMotor.setPower(power);
+            RBMotor.setPower(power);
+
+            try {
+                opMode.idle();
+            } catch (InterruptedException e) {
+                resetMotorPower();
+                e.printStackTrace();
             }
-        } else {
-            while (gyro.getIntegratedZValue() < degree - tolerance) {
-                // turn left
-                LFMotor.setPower(-motorPower);
-                LBMotor.setPower(-motorPower);
-                RFMotor.setPower(-motorPower);
-                RBMotor.setPower(-motorPower);
-                try {
-                    opMode.sleep(500);
-                    opMode.idle();
-                } catch (InterruptedException e) {
-                    resetMotorPower();
-                    e.printStackTrace();
-                }
-            }
-            angle = gyro.getIntegratedZValue();
-            resetMotorPower();
         }
+        resetMotorPower();
     }
 
     /**
