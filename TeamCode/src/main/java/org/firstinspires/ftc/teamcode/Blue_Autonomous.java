@@ -32,7 +32,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 @Autonomous(name="RGB + Encoder + LF", group="RGB + Encoder")
 
-public class Integration_LF_RGB_Encoder extends LinearOpMode{
+public class Blue_Autonomous extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();
     DcMotor LFMotor;
     DcMotor RFMotor;
