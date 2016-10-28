@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @Autonomous(name="RGB+Gyro", group="RGB + Encoder")
 
 public class GyroTester extends LinearOpMode{
-//    Gyro g = new Gyro(this);
+    //Gyro g = new Gyro(this);
     private ElapsedTime     runtime = new ElapsedTime();
     DcMotor LFMotor;
     DcMotor RFMotor;

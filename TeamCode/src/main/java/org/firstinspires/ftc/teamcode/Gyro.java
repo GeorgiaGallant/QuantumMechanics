@@ -18,9 +18,10 @@ public class Gyro{
     private DcMotor LBMotor;
     private DcMotor RBMotor;
     private HardwareMap hardwareMap;
-    private int tolerance = 5;
+    private int tolerance = 0;
     private LinearOpMode opMode;
-    private double motorPower = 0.5;
+    private double motorPower = 0.3;
+    private double motorPower2 = 0.1;
     private double angle = 0;
 
     public Gyro(LinearOpMode opMode){
@@ -52,37 +53,44 @@ public class Gyro{
         return gyro.isCalibrating();
     }
 
-    public void turnTo(int degree){
-        // turn right
-        while(gyro.getIntegratedZValue() > degree + tolerance) {
-            LFMotor.setPower(motorPower);
-            LBMotor.setPower(motorPower);
-            RFMotor.setPower(motorPower);
-            RBMotor.setPower(motorPower);
-            resetMotorPower();
-            try {
-                opMode.idle();
-            } catch (InterruptedException e) {
-                resetMotorPower();
-                e.printStackTrace();
+    public void turnTo(int degree) {
+        if (gyro.getIntegratedZValue() > degree + tolerance) { // turn right
+            while (gyro.getIntegratedZValue() > degree + tolerance) {
+                LFMotor.setPower(motorPower);
+                LBMotor.setPower(motorPower);
+                RFMotor.setPower(motorPower);
+                RBMotor.setPower(motorPower);
+                try {
+                    opMode.idle();
+                } catch (InterruptedException e) {
+                    resetMotorPower();
+                    e.printStackTrace();
+                }
+                try {
+                    opMode.sleep(500);
+                    opMode.idle();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-        while(gyro.getIntegratedZValue() < degree - tolerance){
-           // turn left
-            LFMotor.setPower(-motorPower);
-            LBMotor.setPower(-motorPower);
-            RFMotor.setPower(-motorPower);
-            RBMotor.setPower(-motorPower);
-            resetMotorPower();
-            try {
-                opMode.idle();
-            } catch (InterruptedException e) {
-                resetMotorPower();
-                e.printStackTrace();
+        } else {
+            while (gyro.getIntegratedZValue() < degree - tolerance) {
+                // turn left
+                LFMotor.setPower(-motorPower);
+                LBMotor.setPower(-motorPower);
+                RFMotor.setPower(-motorPower);
+                RBMotor.setPower(-motorPower);
+                try {
+                    opMode.sleep(500);
+                    opMode.idle();
+                } catch (InterruptedException e) {
+                    resetMotorPower();
+                    e.printStackTrace();
+                }
             }
+            angle = gyro.getIntegratedZValue();
+            resetMotorPower();
         }
-        angle = gyro.getIntegratedZValue();
-        resetMotorPower();
     }
 
     /**
@@ -107,6 +115,7 @@ public class Gyro{
                 RBMotor.setPower(-motorPower);
             }
             try {
+                opMode.sleep(500);
                 opMode.idle();
             } catch (InterruptedException e) {
                 resetMotorPower();
@@ -129,5 +138,8 @@ public class Gyro{
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
         RBMotor = hardwareMap.dcMotor.get("RBMotor");
         gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
+    }
+    public double getAngle(){
+        return gyro.getIntegratedZValue();
     }
 }
