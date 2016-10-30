@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/motor_list.xml",
-        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/motor_list.xml"
-    },
-    {
         "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/shape.xml",
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/shape.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/motor_list.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/motor_list.xml"
     },
     {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/analog_inputs.xml",
@@ -16,12 +16,12 @@
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/legacy.xml"
     },
     {
-        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/file_info.xml",
-        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/file_info.xml"
-    },
-    {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/analog_inputs.xml",
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/analog_inputs.xml"
+    },
+    {
+        "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/file_info.xml",
+        "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/file_info.xml"
     },
     {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/servo.xml",
@@ -64,12 +64,12 @@
         "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/simple_device.xml"
     },
     {
-        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/digital_device.xml",
-        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/digital_device.xml"
-    },
-    {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/activity_ftc_controller.xml",
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/src/main/res/layout/activity_ftc_controller.xml"
+    },
+    {
+        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/digital_device.xml",
+        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/digital_device.xml"
     },
     {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/template_info.xml",
@@ -108,20 +108,20 @@
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/matrices.xml"
     },
     {
-        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/i2c_device.xml",
-        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/i2c_device.xml"
-    },
-    {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/activity_swap_usb_devices.xml",
         "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_swap_usb_devices.xml"
     },
     {
-        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/servo.xml",
-        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/servo.xml"
+        "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/i2c_device.xml",
+        "source": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/i2c_device.xml"
     },
     {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/activity_configure_from_template.xml",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_configure_from_template.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/servo.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/servo.xml"
     },
     {
         "merged": "/Users/student/Desktop/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/activity_ftc_wifi_channel_selector.xml",
@@ -140,12 +140,12 @@
         "source": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_swap_usb_devices.xml"
     },
     {
-        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/port_attached_row.xml",
-        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/port_attached_row.xml"
-    },
-    {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/digital_devices.xml",
         "source": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/digital_devices.xml"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/port_attached_row.xml",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/port_attached_row.xml"
     },
     {
         "merged": "/Users/student/Documents/Projects/Robotics/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/release/layout/motor_controller_banner.xml",

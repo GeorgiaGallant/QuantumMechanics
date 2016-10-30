@@ -75,7 +75,7 @@ public class SimpleOpModeLinear extends LinearOpMode {
 
         // eg: Set the drive motor directions:
         // "Reverse" the motor that runs backwards when connected directly to the battery
-        // FL.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
+        // launcherMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         // BL.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
         // Wait for the game to start (driver presses PLAY)
