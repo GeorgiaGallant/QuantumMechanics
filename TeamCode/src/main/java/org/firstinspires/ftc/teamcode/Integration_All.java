@@ -50,16 +50,33 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  */
 
 @TeleOp(name="Linear OpMode", group="Linear Opmode")  // @Autonomous(...) is the other common choice
-public class PickupTest extends LinearOpMode {
+public class Integration_All extends LinearOpMode {
 
     /* Declare OpMode members. */
 
-    DcMotor nom = null;
+    DcMotor NOM = null;
+    DcMotor FL = null;
+    DcMotor BL = null;
+    DcMotor FR = null;
+    DcMotor BR = null;
+    DcMotor Elevator = null;
+    DcMotor Convayor = null;
+    DcMotor Launch = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+
+        FL = hardwareMap.dcMotor.get("FL");
+        BL = hardwareMap.dcMotor.get("BL");
+        FR = hardwareMap.dcMotor.get("FR");
+        BR = hardwareMap.dcMotor.get("BR");
+        NOM = hardwareMap.dcMotor.get("NOM");
+        Elevator = hardwareMap.dcMotor.get("Elevator");
+        Convayor = hardwareMap.dcMotor.get("Convayor");
+        Launch = hardwareMap.dcMotor.get("Launch");
+
 
 
 
@@ -78,9 +95,57 @@ public class PickupTest extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
+            if(Math.abs(gamepad1.left_stick_y) > 0.5) {
+                FL.setPower(-gamepad1.left_stick_y);
+                FR.setPower(gamepad1.left_stick_y);
+                BR.setPower(gamepad1.left_stick_y);
+                BL.setPower(-gamepad1.left_stick_y);
+            }
+            else if(Math.abs(gamepad1.left_stick_x) > 0.5){
+                FL.setPower(-gamepad1.left_stick_x);
+                BL.setPower(-gamepad1.left_stick_x);
+                FR.setPower(-gamepad1.left_stick_x);
+                BR.setPower(-gamepad1.left_stick_x);
+            }else{
+                FL.setPower(0);
+                FR.setPower(0);
+                BR.setPower(0);
+                BL.setPower(0);
+            }
 
+            if(gamepad2.a==true){
+                NOM.setPower(.6);
+            }
+            else{
+                NOM.setPower(0);
+            }
 
+            if (gamepad2.left_stick_y>0.5){
+                Elevator.setPower(.6);
+            }
+            else if (gamepad2.left_stick_y<-0.5){
+                Elevator.setPower(-.6);
+            }
+            else{
+                Elevator.setPower(0);
+            }
+            if (gamepad2.right_stick_x>0.5){
+                Convayor.setPower(.6);
+            }
+            else if (gamepad2.right_stick_x<-0.5){
+                Convayor.setPower(-.6);
+            }
+            else{
+                Convayor.setPower(0);
+            }
 
+            if(gamepad2.x==true){
+                Launch.setPower(.6);
+            }
+            else{
+                Launch.setPower(0);
+            }
 
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
         }
