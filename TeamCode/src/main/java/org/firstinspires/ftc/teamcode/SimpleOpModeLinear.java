@@ -88,19 +88,23 @@ public class SimpleOpModeLinear extends LinearOpMode {
             telemetry.update();
 
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
-            if(gamepad1.left_stick_y != 0) {
+            if(Math.abs(gamepad1.left_stick_y) > 0.5) {
                 FL.setPower(-gamepad1.left_stick_y);
                 FR.setPower(gamepad1.left_stick_y);
                 BR.setPower(gamepad1.left_stick_y);
                 BL.setPower(-gamepad1.left_stick_y);
             }
-
-           else if(gamepad1.left_stick_x != 0){
+           else if(Math.abs(gamepad1.left_stick_x) > 0.5){
                FL.setPower(-gamepad1.left_stick_x);
-                BL.setPower(-gamepad1.left_stick_x);
-                FR.setPower(-gamepad1.left_stick_x);
-                BR.setPower(-gamepad1.left_stick_x);
-            }
+               BL.setPower(-gamepad1.left_stick_x);
+               FR.setPower(-gamepad1.left_stick_x);
+               BR.setPower(-gamepad1.left_stick_x);
+            }else{
+                FL.setPower(0);
+                FR.setPower(0);
+                BR.setPower(0);
+                BL.setPower(0);
+           }
 
 
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
