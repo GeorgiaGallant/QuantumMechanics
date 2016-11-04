@@ -49,7 +49,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Linear OpMode", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+@TeleOp(name="Grete/", group="Linear Opmode")  // @Autonomous(...) is the other common choice
 public class Integration_All extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -60,7 +60,7 @@ public class Integration_All extends LinearOpMode {
     DcMotor FR = null;
     DcMotor BR = null;
     DcMotor Elevator = null;
-    DcMotor Convayor = null;
+    DcMotor Conveyor = null;
     DcMotor Launch = null;
 
     @Override
@@ -74,10 +74,8 @@ public class Integration_All extends LinearOpMode {
         BR = hardwareMap.dcMotor.get("BR");
         NOM = hardwareMap.dcMotor.get("NOM");
         Elevator = hardwareMap.dcMotor.get("Elevator");
-        Convayor = hardwareMap.dcMotor.get("Convayor");
+        Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
-
-
 
 
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
@@ -116,31 +114,22 @@ public class Integration_All extends LinearOpMode {
 
             if(gamepad2.a==true){
                 NOM.setPower(.6);
+                Elevator.setPower(.6);
             }
             else{
                 NOM.setPower(0);
-            }
-
-            if (gamepad2.left_stick_y>0.5){
-                Elevator.setPower(.6);
-            }
-            else if (gamepad2.left_stick_y<-0.5){
-                Elevator.setPower(-.6);
-            }
-            else{
                 Elevator.setPower(0);
             }
-            if (gamepad2.right_stick_x>0.5){
-                Convayor.setPower(.6);
-            }
-            else if (gamepad2.right_stick_x<-0.5){
-                Convayor.setPower(-.6);
+
+
+            if (gamepad2.b == true) {
+                Conveyor.setPower(-.2);
             }
             else{
-                Convayor.setPower(0);
+                Conveyor.setPower(0);
             }
 
-            if(gamepad2.x==true){
+            if(gamepad2.right_trigger > 0.5){
                 Launch.setPower(.6);
             }
             else{
