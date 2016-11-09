@@ -32,10 +32,14 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode;
 
+import android.text.style.TtsSpan;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
  * the autonomous or the teleop period of an FTC match. The names of OpModes appear on the menu
@@ -62,6 +66,7 @@ public class Integration_All extends LinearOpMode {
     DcMotor Elevator = null;
     DcMotor Conveyor = null;
     DcMotor Launch = null;
+    Servo buttonPusher = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -76,7 +81,7 @@ public class Integration_All extends LinearOpMode {
         Elevator = hardwareMap.dcMotor.get("Elevator");
         Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
-
+        buttonPusher = hardwareMap.servo.get("buttonPusher");
 
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
          * to 'get' must correspond to the names assigned during the robot configuration
@@ -94,6 +99,13 @@ public class Integration_All extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
+            if(gamepad2.left_bumper) {
+                buttonPusher.setPosition(1);
+            }
+            if(gamepad2.right_bumper) {
+                buttonPusher.setPosition(-1);
+            }
+
             if(Math.abs(gamepad1.left_stick_y) > 0.5) {
                 FL.setPower(-gamepad1.left_stick_y);
                 FR.setPower(gamepad1.left_stick_y);
@@ -112,15 +124,18 @@ public class Integration_All extends LinearOpMode {
                 BL.setPower(0);
             }
 
-            if(gamepad2.a==true){
+            if(gamepad1.right_bumper==true){
                 NOM.setPower(.6);
                 Elevator.setPower(.6);
+            }
+            if(gamepad1.left_bumper ==true) {
+                NOM.setPower(-.6);
+                Elevator.setPower(-.6);
             }
             else{
                 NOM.setPower(0);
                 Elevator.setPower(0);
             }
-
 
             if (gamepad2.b == true) {
                 Conveyor.setPower(-.2);
