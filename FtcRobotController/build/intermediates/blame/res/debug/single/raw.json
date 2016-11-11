@@ -8,12 +8,12 @@
         "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/nxtstartupsound.wav"
     },
     {
-        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
-        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
-    },
-    {
         "merged": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
         "source": "/Users/student/Documents/Programming/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
+    },
+    {
+        "merged": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
+        "source": "/Users/student/QuantumMechanics/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/raw/chimeconnect.wav"
     },
     {
         "merged": "/Users/student/Desktop/QM/QuantumMechanics/FtcRobotController/build/intermediates/res/merged/debug/raw/chimeconnect.wav",
