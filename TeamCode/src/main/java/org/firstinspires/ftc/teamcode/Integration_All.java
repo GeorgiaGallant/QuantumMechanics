@@ -143,6 +143,9 @@ public class Integration_All extends LinearOpMode {
             if (gamepad2.b == true) {
                 Conveyor.setPower(-.2);
             }
+            else if (gamepad2.x==true){
+                Conveyor.setPower(.2);
+            }
             else{
                 Conveyor.setPower(0);
             }
