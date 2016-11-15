@@ -36,6 +36,7 @@ import android.text.style.TtsSpan;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -78,6 +79,8 @@ public class Integration_All extends LinearOpMode {
         FR = hardwareMap.dcMotor.get("FR");
         BR = hardwareMap.dcMotor.get("BR");
         NOM = hardwareMap.dcMotor.get("NOM");
+        NOM.setDirection(DcMotor.Direction.REVERSE);
+
         Elevator = hardwareMap.dcMotor.get("Elevator");
         Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
@@ -100,10 +103,10 @@ public class Integration_All extends LinearOpMode {
         while (opModeIsActive()) {
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
             if(gamepad2.left_bumper) {
-                buttonPusher.setPosition(1);
+                buttonPusher.setPosition(0.8);
             }
             if(gamepad2.right_bumper) {
-                buttonPusher.setPosition(-1);
+                buttonPusher.setPosition(0.1);
             }
 
             if(Math.abs(gamepad1.left_stick_y) > 0.5) {
@@ -125,12 +128,12 @@ public class Integration_All extends LinearOpMode {
             }
 
             if(gamepad1.right_bumper==true){
-                NOM.setPower(.6);
-                Elevator.setPower(.6);
+                NOM.setPower(.8);
+                Elevator.setPower(.8);
             }
-            if(gamepad1.left_bumper ==true) {
-                NOM.setPower(-.6);
-                Elevator.setPower(-.6);
+            else if(gamepad1.left_bumper ==true) {
+                NOM.setPower(-.8);
+                Elevator.setPower(-.8);
             }
             else{
                 NOM.setPower(0);
