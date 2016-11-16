@@ -105,8 +105,11 @@ public class Integration_All extends LinearOpMode {
             if(gamepad2.left_bumper) {
                 buttonPusher.setPosition(0.8);
             }
-            if(gamepad2.right_bumper) {
+            else if(gamepad2.right_bumper) {
                 buttonPusher.setPosition(0.1);
+            }
+            else if(gamepad2.x) {
+                buttonPusher.setPosition(0.45);
             }
 
             if(Math.abs(gamepad1.left_stick_y) > 0.5) {
@@ -128,12 +131,12 @@ public class Integration_All extends LinearOpMode {
             }
 
             if(gamepad1.right_bumper==true){
-                NOM.setPower(.8);
-                Elevator.setPower(.8);
+                NOM.setPower(.6);
+                Elevator.setPower(.6);
             }
             else if(gamepad1.left_bumper ==true) {
-                NOM.setPower(-.8);
-                Elevator.setPower(-.8);
+                NOM.setPower(-.6);
+                Elevator.setPower(-.6);
             }
             else{
                 NOM.setPower(0);
