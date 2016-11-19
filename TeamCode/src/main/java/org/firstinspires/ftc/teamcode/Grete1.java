@@ -103,12 +103,12 @@ public class Grete1 extends LinearOpMode {
         while (opModeIsActive()) {
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
             if(gamepad2.left_bumper) {
-                buttonPusher.setPosition(0.8);
+                buttonPusher.setPosition(0.7);
             }
             else if(gamepad2.right_bumper) {
                 buttonPusher.setPosition(0.1);
             }
-            else if(gamepad2.x) {
+            else if(gamepad2.left_trigger>.5) {
                 buttonPusher.setPosition(0.45);
             }
 
@@ -130,11 +130,11 @@ public class Grete1 extends LinearOpMode {
                 BL.setPower(0);
             }
 
-            if(gamepad1.right_bumper==true){
+            if(gamepad2.y==true){
                 NOM.setPower(.6);
                 Elevator.setPower(.6);
             }
-            else if(gamepad1.left_bumper ==true) {
+            else if(gamepad2.a ==true) {
                 NOM.setPower(-.6);
                 Elevator.setPower(-.6);
             }
@@ -146,14 +146,17 @@ public class Grete1 extends LinearOpMode {
             if (gamepad2.b == true) {
                 Conveyor.setPower(-.2);
             }
-//            else if (gamepad2.x==true){
-//                Conveyor.setPower(.2);
-//            }
+            else if (gamepad2.x==true){
+                Conveyor.setPower(.2);
+            }
             else{
                 Conveyor.setPower(0);
             }
 
             if(gamepad2.right_trigger > 0.5){
+                Launch.setPower(.6);
+            }
+            else if(gamepad1.right_trigger > 0.5){
                 Launch.setPower(.6);
             }
             else{
