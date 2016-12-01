@@ -141,6 +141,7 @@ public class Blue_Autonomous extends LinearOpMode{
         servo.setPosition(.7);
 
 
+
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
@@ -153,7 +154,7 @@ public class Blue_Autonomous extends LinearOpMode{
         RFMotor.setPower(0);
         RBMotor.setPower(0);
         sleep(1500);
-        encoderDrive(TURN_SPEED, -3.85, -3.85, -3.85, -3.85, 4.0);   // turn right
+        encoderDrive(TURN_SPEED, -3.65, -3.65, -3.65, -3.65, 4.0);   // turn right
 
         while (colorSensorR.alpha() < 40) {
            //telemetry.addData("color", colorSensorL.alpha());
@@ -257,6 +258,10 @@ public class Blue_Autonomous extends LinearOpMode{
             servo.setPosition(.6);
             encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
             sleep(100);
+            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
 
         }
         else {
@@ -264,13 +269,15 @@ public class Blue_Autonomous extends LinearOpMode{
             servo.setPosition(.28);
             encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
             sleep(100);
+            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
+            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
         }
-        encoderDrive(DRIVE_SPEED_SLOW, 1.75, -1.75, 1.75, -1.75, 5.0);
-        encoderDrive(DRIVE_SPEED_SLOW, -1.75, 1.75, -1.75, 1.75, 5.0);
-        encoderDrive(DRIVE_SPEED_SLOW, 1.75, -1.75, 1.75, -1.75, 5.0);
-        encoderDrive(DRIVE_SPEED_SLOW, -1.75, 1.75, -1.75, 1.75, 5.0); //backwards
 
 
+        encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
+        encoderDrive(TURN_SPEED, 15, 15, 15, 15, 4.0);   // turn right
 
 
     }
