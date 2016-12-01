@@ -148,7 +148,12 @@ public class Blue_Autonomous extends LinearOpMode{
         // Note: Reetting a negative distance (not speed)
         telemetry.addData("STARTED", 6666);
         encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
-        encoderDrive(TURN_SPEED, -3.9, -3.9, -3.9, -3.9, 4.0);   // turn right
+        LFMotor.setPower(0);
+        LBMotor.setPower(0);
+        RFMotor.setPower(0);
+        RBMotor.setPower(0);
+        sleep(1500);
+        encoderDrive(TURN_SPEED, -3.85, -3.85, -3.85, -3.85, 4.0);   // turn right
 
         while (colorSensorR.alpha() < 40) {
            //telemetry.addData("color", colorSensorL.alpha());
@@ -170,7 +175,7 @@ public class Blue_Autonomous extends LinearOpMode{
         RBMotor.setPower(0);
         sleep(50);
 //
-        while(colorSensorF.alpha()<2) {
+        while(colorSensorF.alpha() < 2) {
             telemetry.addData("front", colorSensorF.alpha());
             telemetry.update();
             LPower = .2;
@@ -227,41 +232,45 @@ public class Blue_Autonomous extends LinearOpMode{
             LBMotor.setPower(0);
             sleep(50);
 
+            idle();
+            int red =0;
+            int blue = 0;
 
-//
-//            idle();
-//        int red =0;
-//        int blue = 0;
-//
-//        for(int x =0; x<100; x++) {
-//
-//            if (colorSensorF.red() > colorSensorF.blue()) {
-//                red++;
-//            } else {
-//                blue++;
-//            }
-//
-//
-//        }
-//        encoderDrive(DRIVE_SPEED_FAST, -1, 1, -1, 1, 5.0);  //drive forward
-//        telemetry.addData("red",  red);
-//        telemetry.addData("bLue", blue);
-//        telemetry.update();
-//        if(red>blue){
-//            telemetry.addData("COLOR: ", "red");
-//            servo.setPosition(-1);
-//            sleep(100);
-//            telemetry.update();
-//
-//        }
-//        else {
-//            telemetry.addData("COLOR: ", "blue");
-//            servo.setPosition(1);
-//            sleep(100);
-//            telemetry.update();
-//
-//        }
-//        encoderDrive(DRIVE_SPEED_SLOW, 4, -4, 4, -4, 5.0);  //drive forward
+        for(int x =0; x<100; x++) {
+
+            if (colorSensorF.red() > colorSensorF.blue()) {
+                red++;
+            } else {
+                blue++;
+            }
+
+
+        }
+        encoderDrive(DRIVE_SPEED_FAST, -3, 3, -3, 3, 5.0);  //drive forward
+
+
+        telemetry.addData("red",  red);
+        telemetry.addData("bLue", blue);
+        telemetry.update();
+        if(red>blue){
+            telemetry.addData("COLOR: ", "red");
+            servo.setPosition(.6);
+            encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
+            sleep(100);
+
+        }
+        else {
+            telemetry.addData("COLOR: ", "blue");
+            servo.setPosition(.28);
+            encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
+            sleep(100);
+        }
+        encoderDrive(DRIVE_SPEED_SLOW, 1.75, -1.75, 1.75, -1.75, 5.0);
+        encoderDrive(DRIVE_SPEED_SLOW, -1.75, 1.75, -1.75, 1.75, 5.0);
+        encoderDrive(DRIVE_SPEED_SLOW, 1.75, -1.75, 1.75, -1.75, 5.0);
+        encoderDrive(DRIVE_SPEED_SLOW, -1.75, 1.75, -1.75, 1.75, 5.0); //backwards
+
+
 
 
     }
