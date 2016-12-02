@@ -158,6 +158,15 @@ public class Red_Autonomous extends LinearOpMode {
         sleep(1500);
         encoderDrive(TURN_SPEED, 3.85, 3.85, 3.85, 3.85, 4.0);   // turn left
 
+        servo.setPosition(.28);
+        double start = getRuntime();
+
+        while((getRuntime() - start)< 2){
+            Launch.setPower(.6);
+            //Conveyor.setPower(1);
+        }
+        Launch.setPower(0);
+        servo.setPosition(.6);
 
         while (colorSensorL.alpha() < 40) {
             telemetry.addData("color", colorSensorL.alpha());
@@ -279,9 +288,10 @@ public class Red_Autonomous extends LinearOpMode {
         }
 
 
-
         encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
-        encoderDrive(TURN_SPEED, 15, 15, 15, 15, 4.0);   // turn right
+        encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
+        encoderDrive(DRIVE_SPEED_SLOW, 1, -1, 1, -1, 5.0);
+
 
 
 
