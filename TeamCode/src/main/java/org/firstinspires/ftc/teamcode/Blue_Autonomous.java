@@ -154,6 +154,18 @@ public class Blue_Autonomous extends LinearOpMode{
         RFMotor.setPower(0);
         RBMotor.setPower(0);
         sleep(1500);
+
+        double start = getRuntime();
+
+
+        servo.setPosition(.28);
+        while((getRuntime() - start)< 2){
+            Launch.setPower(.6);
+            //Conveyor.setPower(1);
+        }
+        Launch.setPower(0);
+        servo.setPosition(.6);
+
         encoderDrive(TURN_SPEED, -3.65, -3.65, -3.65, -3.65, 4.0);   // turn right
 
         while (colorSensorR.alpha() < 40) {
@@ -167,6 +179,8 @@ public class Blue_Autonomous extends LinearOpMode{
             sleep(50);
             idle();
         }
+
+
 
 
         // NOW WE SHOULD DO LINE FOLLOWING
@@ -277,7 +291,9 @@ public class Blue_Autonomous extends LinearOpMode{
 
 
         encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
-        encoderDrive(TURN_SPEED, 15, 15, 15, 15, 4.0);   // turn right
+        encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
+        encoderDrive(DRIVE_SPEED_SLOW, 1, -1, 1, -1, 5.0);
+
 
 
     }
