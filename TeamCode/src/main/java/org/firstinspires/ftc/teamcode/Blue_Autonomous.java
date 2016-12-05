@@ -28,7 +28,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Created by student on 10/6/16.
+ * Quantum Mechanics
+ * FTC Team 6051
+ * Blue Autonomous
  */
 @Autonomous(name="Blue Autonomous", group="RGB + Encoder")
 
