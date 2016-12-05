@@ -140,7 +140,17 @@ public class Blue_Autonomous extends LinearOpMode{
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        servo.setPosition(.55);
+        if(servo.getPosition() < .55){
+            for(double i = servo.getPosition(); i < .55; i += .05){
+                servo.setPosition(i);
+            }
+        }
+        else if(servo.getPosition() >  .55){
+            for(double i = servo.getPosition(); i > .55; i -= .05){
+                servo.setPosition(i);
+            }
+        }//set servo position without oscillation
+
 
 
 
@@ -161,13 +171,33 @@ public class Blue_Autonomous extends LinearOpMode{
 
 
 
-        servo.setPosition(.28);
+        if(servo.getPosition() < .28){
+            for(double i = servo.getPosition(); i < .28; i += .04){
+                servo.setPosition(i);
+            }
+        }
+        else if(servo.getPosition() >  .28){
+            for(double i = servo.getPosition(); i > .28; i -= .04){
+                servo.setPosition(i);
+            }
+        }//set servo position without oscillation
+
         while((getRuntime() - start)< 2){
             Launch.setPower(.6);
             //Conveyor.setPower(1);
         }
         Launch.setPower(0);
-        servo.setPosition(.6);
+
+        if(servo.getPosition() < .6){
+            for(double i = servo.getPosition(); i < .6; i += .05){
+                servo.setPosition(i);
+            }
+        }
+        else if(servo.getPosition() >  .6){
+            for(double i = servo.getPosition(); i > .6; i -= .05){
+                servo.setPosition(i);
+            }
+        }//set servo position without oscillation
 
         encoderDrive(TURN_SPEED, -3.65, -3.65, -3.65, -3.65, 4.0);   // turn right
 
@@ -272,7 +302,16 @@ public class Blue_Autonomous extends LinearOpMode{
         telemetry.update();
         if(red>blue){
             telemetry.addData("COLOR: ", "red");
-            servo.setPosition(.55);
+            if(servo.getPosition() < .55){
+                for(double i = servo.getPosition(); i < .55; i += .05){
+                    servo.setPosition(i);
+                }
+            }
+            else if(servo.getPosition() >  .55){
+                for(double i = servo.getPosition(); i > .28; i -= .05){
+                    servo.setPosition(i);
+                }
+            }//set servo position without oscillation
             encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
@@ -283,7 +322,16 @@ public class Blue_Autonomous extends LinearOpMode{
         }
         else {
             telemetry.addData("COLOR: ", "blue");
-            servo.setPosition(.24);
+            if(servo.getPosition() < .24){
+                for(double i = servo.getPosition(); i < .24; i += .04){
+                    servo.setPosition(i);
+                }
+            }
+            else if(servo.getPosition() >  .24){
+                for(double i = servo.getPosition(); i > .24; i -= .04){
+                    servo.setPosition(i);
+                }
+            }//set servo position without oscillation
             encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
