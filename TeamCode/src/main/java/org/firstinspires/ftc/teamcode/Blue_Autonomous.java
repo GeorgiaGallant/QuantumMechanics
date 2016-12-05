@@ -138,7 +138,7 @@ public class Blue_Autonomous extends LinearOpMode{
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        servo.setPosition(.7);
+        servo.setPosition(.55);
 
 
 
@@ -156,6 +156,7 @@ public class Blue_Autonomous extends LinearOpMode{
         sleep(1500);
 
         double start = getRuntime();
+
 
 
         servo.setPosition(.28);
@@ -188,7 +189,7 @@ public class Blue_Autonomous extends LinearOpMode{
         LBMotor.setPower(0);
         RFMotor.setPower(0);
         RBMotor.setPower(0);
-        sleep(50);
+        sleep(1000);
 //
         while(colorSensorF.alpha() < 2) {
             telemetry.addData("front", colorSensorF.alpha());
@@ -269,7 +270,7 @@ public class Blue_Autonomous extends LinearOpMode{
         telemetry.update();
         if(red>blue){
             telemetry.addData("COLOR: ", "red");
-            servo.setPosition(.6);
+            servo.setPosition(.55);
             encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
@@ -280,7 +281,7 @@ public class Blue_Autonomous extends LinearOpMode{
         }
         else {
             telemetry.addData("COLOR: ", "blue");
-            servo.setPosition(.28);
+            servo.setPosition(.24);
             encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
@@ -292,7 +293,7 @@ public class Blue_Autonomous extends LinearOpMode{
 
         encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
         encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
-        encoderDrive(DRIVE_SPEED_SLOW, 1, -1, 1, -1, 5.0);
+        encoderDrive(DRIVE_SPEED_SLOW, 2, -2, 2, -2, 5.0);
 
 
 
