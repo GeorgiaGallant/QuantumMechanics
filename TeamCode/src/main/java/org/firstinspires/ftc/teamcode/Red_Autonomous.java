@@ -141,7 +141,7 @@ public class Red_Autonomous extends LinearOpMode {
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        servo.setPosition(.7);
+        servo.setPosition(.6);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -166,7 +166,7 @@ public class Red_Autonomous extends LinearOpMode {
             //Conveyor.setPower(1);
         }
         Launch.setPower(0);
-        servo.setPosition(.6);
+        servo.setPosition(.55);
 
         while (colorSensorL.alpha() < 40) {
             telemetry.addData("color", colorSensorL.alpha());
@@ -185,7 +185,7 @@ public class Red_Autonomous extends LinearOpMode {
         LBMotor.setPower(0);
         RFMotor.setPower(0);
         RBMotor.setPower(0);
-        sleep(50);
+        sleep(1000);
 //
         while(colorSensorF.alpha() < 2) {
             telemetry.addData("front", colorSensorF.alpha());
@@ -267,8 +267,8 @@ public class Red_Autonomous extends LinearOpMode {
         telemetry.update();
         if(red>blue){
             telemetry.addData("COLOR: ", "red");
-            servo.setPosition(.6);
-            encoderDrive(TURN_SPEED, .6, .6, .6, .6, 4.0);   // turn left
+            servo.setPosition(.55);
+            encoderDrive(TURN_SPEED, .8, .8, .8, .8, 4.0);   // turn left
             encoderDrive(DRIVE_SPEED_SLOW, 4.5, -4.5, 4.5, -4.5, 5.0);
             encoderDrive(DRIVE_SPEED_SLOW, -4.5, 4.5, -4.5, 4.5, 5.0);
             encoderDrive(DRIVE_SPEED_SLOW, 4.5, -4.5, 4.5, -4.5, 5.0);
@@ -278,7 +278,7 @@ public class Red_Autonomous extends LinearOpMode {
         }
         else {
             telemetry.addData("COLOR: ", "blue");
-            servo.setPosition(.27);
+            servo.setPosition(.25);
             encoderDrive(TURN_SPEED, .55, .55, .55, .55, 4.0);   // turn left
             encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
             encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);

@@ -56,6 +56,8 @@ public class Integration_All extends LinearOpMode {
         Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
         buttonPusher = hardwareMap.servo.get("buttonPusher");
+        buttonPusher.setPosition(0.67);
+
 
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
          * to 'get' must correspond to the names assigned during the robot configuration
@@ -74,13 +76,14 @@ public class Integration_All extends LinearOpMode {
         while (opModeIsActive()) {
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
             if(gamepad2.left_bumper) {
-                buttonPusher.setPosition(0.8);
+                buttonPusher.setPosition(0.6);
+
             }
             else if(gamepad2.right_bumper) {
-                buttonPusher.setPosition(0.1);
+                buttonPusher.setPosition(0.27);
             }
             else if(gamepad2.x) {
-                buttonPusher.setPosition(0.45);
+                buttonPusher.setPosition(0.67);
             }
 
             if(Math.abs(gamepad1.left_stick_y) > 0.5) {
@@ -117,9 +120,9 @@ public class Integration_All extends LinearOpMode {
             if (gamepad2.b == true) {
                 Conveyor.setPower(-.2);
             }
-            else if (gamepad2.x==true){
-                Conveyor.setPower(.2);
-            }
+//            else if (gamepad2.x==true){
+//                Conveyor.setPower(.2);
+//            }
             else{
                 Conveyor.setPower(0);
             }

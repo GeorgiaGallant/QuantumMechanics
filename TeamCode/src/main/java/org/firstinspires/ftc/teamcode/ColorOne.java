@@ -35,75 +35,66 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 
-import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.DigitalChannelController;
-import com.qualcomm.robotcore.hardware.I2cAddr;
 
 @Autonomous(name = "Color One", group = "Sensor")
-//@Disabled                            // Comment this out to add to the opmode list
 public class ColorOne extends LinearOpMode {
 
-	ColorSensor sensorRGB1;
-	//ColorSensor sensorRGB2;
+    ColorSensor colorSensor;    // Hardware Device Object
 	DeviceInterfaceModule cdim;
-
-	// we assume that the LED pin of the RGB sensor is connected to
-	// digital port 5 (zero indexed).
-	// static final int LED_CHANNEL = 5;
 
 	@Override
 	public void runOpMode() throws InterruptedException {
-
-		// hsvValues is an array that will hold the hue, saturation, and value information.
-		// float hsvValues[] = {0F,0F,0F};
-
-
 		cdim = hardwareMap.deviceInterfaceModule.get("dim");
 
-		// get a reference to our ColorSensor object.
-		sensorRGB1 = hardwareMap.colorSensor.get("color sensor beacon");
-		sensorRGB1.setI2cAddress(I2cAddr.create8bit(0x5c));
-		sensorRGB1.enableLed(false);
+				// hsvValues is an array that will hold the hue, saturation, and value information.
+				float hsvValues[] = {0F,0F,0F};
 
+				// values is a reference to the hsvValues array.
+				final float values[] = hsvValues;
 
-		// sensorRGB2 = hardwareMap.colorSensor.get("color2");
+				boolean bLedOn = true;
 
+				// get a reference to our ColorSensor object.
+                colorSensor = hardwareMap.colorSensor.get("color sensor beacon");
 
-		// wait for the start button to be pressed.
-		waitForStart();
+				// Set the LED in the beginning
+				colorSensor.enableLed(bLedOn);
 
-		// loop and read the RGB data.
-		// Note we use opModeIsActive() as our loop condition because it is an interruptible method.
-		while (opModeIsActive())  {
+				// wait for the start button to be pressed.
+				waitForStart();
 
+				// while the op mode is active, loop and read the RGB data.
+				// Note we use opModeIsActive() as our loop condition because it is an interruptible method.
+				while (opModeIsActive()) {
 
-			// send the info back to driver station using telemetry function.
+					// check the status of the x button on either gamepad.
 
+						colorSensor.enableLed(bLedOn);
 
-			//      telemetry.addData("Clear 2", sensorRGB2.alpha());
-			//      telemetry.addData("Red  2", sensorRGB2.red());
-			//      telemetry.addData("Green 2", sensorRGB2.green());
-			//      telemetry.addData("Blue 2", sensorRGB2.blue());
-			//telemetry.addData("Hue", hsvValues[0]);
+					// convert the RGB values to HSV values.
 
+					// send the info back to driver station using telemetry function.
+					telemetry.addData("LED", bLedOn ? "On" : "Off");
+					telemetry.addData("Clear", colorSensor.alpha());
+					telemetry.addData("Red  ", colorSensor.red());
+					telemetry.addData("Green", colorSensor.green());
+					telemetry.addData("Blue ", colorSensor.blue());
+					telemetry.addData("Hue", hsvValues[0]);
 
+					// change the background color to match the color detected by the RGB sensor.
+					// pass a reference to the hue, saturation, and value array as an argument
+					// to the HSVToColor method.
 
-			telemetry.addData("Clear 1", sensorRGB1.alpha());
-			telemetry.addData("Red  1", sensorRGB1.red());
-			telemetry.addData("Green 1", sensorRGB1.green());
-			telemetry.addData("Blue 1", sensorRGB1.blue());
-			telemetry.update();
-
-
-
-
-			idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop help me
+					telemetry.update();
+					idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
+				}
+			}
 		}
-	}
-}
 
 
