@@ -170,7 +170,6 @@ public class Blue_Autonomous extends LinearOpMode{
         double start = getRuntime();
 
 
-
         if(servo.getPosition() < .28){
             for(double i = servo.getPosition(); i < .28; i += .04){
                 servo.setPosition(i);
