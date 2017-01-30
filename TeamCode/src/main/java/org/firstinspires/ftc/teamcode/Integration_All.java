@@ -56,16 +56,8 @@ public class Integration_All extends LinearOpMode {
         Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
         buttonPusher = hardwareMap.servo.get("buttonPusher");
-        if(buttonPusher.getPosition() < .67){
-            for(double i = buttonPusher.getPosition(); i < .67; i += .05){
-                buttonPusher.setPosition(i);
-            }
-        }
-        else if(buttonPusher.getPosition() >  .67){
-            for(double i = buttonPusher.getPosition(); i > .67; i -= .05){
-                buttonPusher.setPosition(i);
-            }
-        }//set servo position without oscillation
+        buttonPusher.setPosition(0.65);
+
 
 
         /* eg: Initialize the hardware variables. Note that the strings used here as parameters
@@ -85,41 +77,14 @@ public class Integration_All extends LinearOpMode {
         while (opModeIsActive()) {
             // eg: Run wheels in tank mode (note: The joystick goes negative when pushed forwards)
             if(gamepad2.left_bumper) {
-                if(buttonPusher.getPosition() < .6){
-                    for(double i = buttonPusher.getPosition(); i < .6; i += .05){
-                        buttonPusher.setPosition(i);
-                    }
-                }
-                else if(buttonPusher.getPosition() >  .6){
-                    for(double i = buttonPusher.getPosition(); i > .6; i -= .05){
-                        buttonPusher.setPosition(i);
-                    }
-                }//set servo position without oscillation
-
+                buttonPusher.setPosition(0.6);
             }
             else if(gamepad2.right_bumper) {
-                if(buttonPusher.getPosition() < .27){
-                    for(double i = buttonPusher.getPosition(); i < .27; i += .03){
-                        buttonPusher.setPosition(i);
-                    }
-                }
-                else if(buttonPusher.getPosition() >  .27){
-                    for(double i = buttonPusher.getPosition(); i > .27; i -= .03){
-                        buttonPusher.setPosition(i);
-                    }
-                }//set servo position without oscillation
+                buttonPusher.setPosition(0.27);
+
             }
-            else if(gamepad2.x) {
-                if(buttonPusher.getPosition() < .67){
-                    for(double i = buttonPusher.getPosition(); i < .67; i += .01){
-                        buttonPusher.setPosition(i);
-                    }
-                }
-                else if(buttonPusher.getPosition() >  .67){
-                    for(double i = buttonPusher.getPosition(); i > .67; i -= .01){
-                        buttonPusher.setPosition(i);
-                    }
-                }//set servo position without oscillation
+            else if(gamepad2.y){
+                buttonPusher.setPosition(0.65);
             }
 
             if(Math.abs(gamepad1.left_stick_y) > 0.5) {
@@ -154,7 +119,11 @@ public class Integration_All extends LinearOpMode {
             }
 
             if (gamepad2.b == true) {
-                Conveyor.setPower(-.2);
+                Conveyor.setPower(-1);
+            }
+            else if(gamepad2.x) {
+                Conveyor.setPower(1);
+
             }
 //            else if (gamepad2.x==true){
 //                Conveyor.setPower(.2);

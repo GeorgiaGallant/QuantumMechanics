@@ -106,7 +106,7 @@ public class SensorAdafruitRGBTest extends LinearOpMode {
 
     // get a reference to our ColorSensor object.
     sensorRGB1 = hardwareMap.colorSensor.get("color1");
-    //sensorRGB1.setI2cAddress(I2cAddr.create8bit(0x5c));
+   sensorRGB1.setI2cAddress(I2cAddr.create8bit(0x4c));
     // sensorRGB2 = hardwareMap.colorSensor.get("color2");
 
     // turn the LED on in the beginning, just so user will know that the sensor is active.

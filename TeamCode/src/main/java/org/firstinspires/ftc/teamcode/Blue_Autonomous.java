@@ -84,8 +84,8 @@ public class Blue_Autonomous extends LinearOpMode{
         colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
 
 
-       // colorSensorL.setI2cAddress(I2cAddr.create8bit(0x4c));
-        colorSensorF.setI2cAddress(I2cAddr.create8bit(0x5c));
+        colorSensorR.setI2cAddress(I2cAddr.create8bit(0x5c));
+        colorSensorF.setI2cAddress(I2cAddr.create8bit(0x4c));
 
 
         colorSensorF.enableLed(false);
@@ -140,17 +140,7 @@ public class Blue_Autonomous extends LinearOpMode{
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        if(servo.getPosition() < .55){
-            for(double i = servo.getPosition(); i < .55; i += .05){
-                servo.setPosition(i);
-            }
-        }
-        else if(servo.getPosition() >  .55){
-            for(double i = servo.getPosition(); i > .55; i -= .05){
-                servo.setPosition(i);
-            }
-        }//set servo position without oscillation
-
+        servo.setPosition(0.65);
 
 
 
@@ -170,37 +160,18 @@ public class Blue_Autonomous extends LinearOpMode{
         double start = getRuntime();
 
 
-        if(servo.getPosition() < .28){
-            for(double i = servo.getPosition(); i < .28; i += .04){
-                servo.setPosition(i);
-            }
-        }
-        else if(servo.getPosition() >  .28){
-            for(double i = servo.getPosition(); i > .28; i -= .04){
-                servo.setPosition(i);
-            }
-        }//set servo position without oscillation
+        servo.setPosition(.28);
 
         while((getRuntime() - start)< 2){
             Launch.setPower(.6);
             //Conveyor.setPower(1);
         }
         Launch.setPower(0);
+        servo.setPosition(.6);
 
-        if(servo.getPosition() < .6){
-            for(double i = servo.getPosition(); i < .6; i += .05){
-                servo.setPosition(i);
-            }
-        }
-        else if(servo.getPosition() >  .6){
-            for(double i = servo.getPosition(); i > .6; i -= .05){
-                servo.setPosition(i);
-            }
-        }//set servo position without oscillation
+        encoderDrive(TURN_SPEED, -4, -4, -4, -4, 4.0);   // turn right
 
-        encoderDrive(TURN_SPEED, -3.65, -3.65, -3.65, -3.65, 4.0);   // turn right
-
-        while (colorSensorR.alpha() < 40) {
+        while (colorSensorR.alpha() < 30) {
            //telemetry.addData("color", colorSensorL.alpha());
             telemetry.addData("color", colorSensorR.alpha());
             telemetry.update();
@@ -301,16 +272,8 @@ public class Blue_Autonomous extends LinearOpMode{
         telemetry.update();
         if(red>blue){
             telemetry.addData("COLOR: ", "red");
-            if(servo.getPosition() < .55){
-                for(double i = servo.getPosition(); i < .55; i += .05){
-                    servo.setPosition(i);
-                }
-            }
-            else if(servo.getPosition() >  .55){
-                for(double i = servo.getPosition(); i > .28; i -= .05){
-                    servo.setPosition(i);
-                }
-            }//set servo position without oscillation
+            servo.setPosition(.55);
+
             encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
@@ -321,16 +284,7 @@ public class Blue_Autonomous extends LinearOpMode{
         }
         else {
             telemetry.addData("COLOR: ", "blue");
-            if(servo.getPosition() < .24){
-                for(double i = servo.getPosition(); i < .24; i += .04){
-                    servo.setPosition(i);
-                }
-            }
-            else if(servo.getPosition() >  .24){
-                for(double i = servo.getPosition(); i > .24; i -= .04){
-                    servo.setPosition(i);
-                }
-            }//set servo position without oscillation
+            servo.setPosition(.24);
             encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
             sleep(100);
             encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);

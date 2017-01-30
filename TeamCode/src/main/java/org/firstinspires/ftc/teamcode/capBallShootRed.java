@@ -113,6 +113,8 @@ public class capBallShootRed extends LinearOpMode {
             Launch = hardwareMap.dcMotor.get("Launch");
 
             NOM.setDirection(DcMotor.Direction.REVERSE);
+            Conveyor.setDirection(DcMotor.Direction.REVERSE);
+
 
             telemetry.addData("Status", "Resetting Encoders");
             telemetry.update();
@@ -145,7 +147,11 @@ public class capBallShootRed extends LinearOpMode {
 
             // Step through each leg of the path,verse movement is obtained by s
             // Note: Reetting a negative distance (not speed)
-            encoderDrive(DRIVE_SPEED_FAST, 9.5, -9.5, 9.5, -9.5, 5.0);  //drive forward
+
+            //sleep(14000);
+
+
+            encoderDrive(DRIVE_SPEED_FAST, 9.8, -9.8, 9.8, -9.8, 5.0);  //drive forward
             encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn left              LFMotor.setPower(0);
             LBMotor.setPower(0);
             RFMotor.setPower(0);
@@ -154,23 +160,26 @@ public class capBallShootRed extends LinearOpMode {
 
             double start = getRuntime();
 
-
-
             servo.setPosition(.28);
-            while((getRuntime() - start)< 2){
-                Launch.setPower(.6);
-            }
-            while((getRuntime() - start)< 2){
-                Conveyor.setPower(1);
-            }
-            while((getRuntime() - start)< 2){
+            while ((getRuntime() - start) < 2) {
                 Launch.setPower(.6);
             }
             Launch.setPower(0);
+            start = getRuntime();
+            while ((getRuntime() - start) < 2) {
+                Conveyor.setPower(1);
+            }
+
+            start = getRuntime();
+            while ((getRuntime() - start) < 2.2) {
+                Launch.setPower(.6);
+            }
+            Conveyor.setPower(0);
+            Launch.setPower(0);
             servo.setPosition(.67);
 
-            encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
-            encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
+            encoderDrive(TURN_SPEED, -1, -1, -1, -1, 4.0);   // turn right
+            encoderDrive(DRIVE_SPEED_FAST, 10, -10, 10, -10, 5.0);  //drive forward
             LFMotor.setPower(0);
             LBMotor.setPower(0);
             RFMotor.setPower(0);

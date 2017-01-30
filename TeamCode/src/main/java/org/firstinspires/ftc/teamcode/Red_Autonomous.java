@@ -30,7 +30,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-@Autonomous(name="Red Autonomous", group="RGB + Encoder")
+@Autonomous(name="Red Autonomous++++", group="RGB + Encoder")
 
 
 public class Red_Autonomous extends LinearOpMode {
@@ -150,47 +150,47 @@ public class Red_Autonomous extends LinearOpMode {
         // Step through each leg of the path,verse movement is obtained by s
         // Note: Reetting a negative distance (not speed)
 //        telemetry.addData("STARTED", 6666);
-        encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
-        LFMotor.setPower(0);
-        LBMotor.setPower(0);
-        RFMotor.setPower(0);
-        RBMotor.setPower(0);
-        sleep(1500);
-        encoderDrive(TURN_SPEED, 3.85, 3.85, 3.85, 3.85, 4.0);   // turn left
+//        encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
+//        LFMotor.setPower(0);
+//        LBMotor.setPower(0);
+//        RFMotor.setPower(0);
+//        RBMotor.setPower(0);
+//        sleep(1500);
+//        encoderDrive(TURN_SPEED, 3.85, 3.85, 3.85, 3.85, 4.0);   // turn left
+//
+//        servo.setPosition(.28);
+//        double start = getRuntime();
+//
+//        while((getRuntime() - start)< 2){
+//            Launch.setPower(.6);
+//            //Conveyor.setPower(1);
+//        }
+//
+//        Launch.setPower(0);
+//        servo.setPosition(.55);
+//
+//        while (colorSensorL.alpha() < 30) {
+//            telemetry.addData("color", colorSensorL.alpha());
+//            telemetry.update();
+//            LFMotor.setPower(.4);
+//            LBMotor.setPower(.4);
+//            RFMotor.setPower(-.4);
+//            RBMotor.setPower(-.4);
+//            sleep(50);
+//            idle();
+//        }
+//
+//
+//        // NOW WE SHOULD DO LINE FOLLOWING
+//        LFMotor.setPower(0);
+//        LBMotor.setPower(0);
+//        RFMotor.setPower(0);
+//        RBMotor.setPower(0);
+//        sleep(1000);
 
-        servo.setPosition(.28);
-        double start = getRuntime();
 
-        while((getRuntime() - start)< 2){
-            Launch.setPower(.6);
-            //Conveyor.setPower(1);
-        }
-
-        Launch.setPower(0);
-        servo.setPosition(.55);
-
-        while (colorSensorL.alpha() < 30) {
-            telemetry.addData("color", colorSensorL.alpha());
-            telemetry.update();
-            LFMotor.setPower(.4);
-            LBMotor.setPower(.4);
-            RFMotor.setPower(-.4);
-            RBMotor.setPower(-.4);
-            sleep(50);
-            idle();
-        }
-
-
-        // NOW WE SHOULD DO LINE FOLLOWING
-        LFMotor.setPower(0);
-        LBMotor.setPower(0);
-        RFMotor.setPower(0);
-        RBMotor.setPower(0);
-        sleep(1000);
-
-
-
-        while(colorSensorF.alpha() < 2){
+       // (colorSensorF.alpha() < 2
+        while(true){
             LPower = .2;
             RPower = .2;
         //} {

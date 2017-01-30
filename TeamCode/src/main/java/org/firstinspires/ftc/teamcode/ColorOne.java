@@ -41,11 +41,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
+import com.qualcomm.robotcore.hardware.I2cAddr;
 
 @Autonomous(name = "Color One", group = "Sensor")
 public class ColorOne extends LinearOpMode {
 
-    ColorSensor colorSensor;    // Hardware Device Object
+    ColorSensor colorSensorR;
+	ColorSensor colorSensorL;
+	ColorSensor colorSensorF; // Hardware Device Object
 	DeviceInterfaceModule cdim;
 
 	@Override
@@ -60,11 +63,21 @@ public class ColorOne extends LinearOpMode {
 
 				boolean bLedOn = true;
 
+
 				// get a reference to our ColorSensor object.
-                colorSensor = hardwareMap.colorSensor.get("color sensor beacon");
+//		colorSensorR = hardwareMap.colorSensor.get("color sensor right");
+//		colorSensorR.setI2cAddress(I2cAddr.create8bit(0x5c));
+//		colorSensorR.enableLed(true);
+
+//		colorSensorL = hardwareMap.colorSensor.get("color sensor left");
+//		//colorSensorL.setI2cAddress(I2cAddr.create8bit(0x4c));
+//		colorSensorL.enableLed(true);
+//
+		colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
+		colorSensorF.setI2cAddress(I2cAddr.create8bit(0x4c));
+		//colorSensorF.enableLed(true);
 
 				// Set the LED in the beginning
-				colorSensor.enableLed(bLedOn);
 
 				// wait for the start button to be pressed.
 				waitForStart();
@@ -75,17 +88,37 @@ public class ColorOne extends LinearOpMode {
 
 					// check the status of the x button on either gamepad.
 
-						colorSensor.enableLed(bLedOn);
-
 					// convert the RGB values to HSV values.
 
-					// send the info back to driver station using telemetry function.
+//					// send the info back to driver station using telemetry function.
+//					telemetry.addData("right", 1);
+//					telemetry.addData("LED", bLedOn ? "On" : "Off");
+//					telemetry.addData("Clear", colorSensorR.alpha());
+//					telemetry.addData("Red  ", colorSensorR.red());
+//					//telemetry.addData("Green", colorSensor.green());
+//					telemetry.addData("Blue ", colorSensorR.blue());
+//					//telemetry.addData("Hue", hsvValues[0]);
+//
+//					telemetry.addData("left", 1);
+//					telemetry.addData("LED", bLedOn ? "On" : "Off");
+//					telemetry.addData("Clear", colorSensorL.alpha());
+//					telemetry.addData("Red  ", colorSensorL.red());
+//					//telemetry.addData("Green", colorSensor.green());
+//					telemetry.addData("Blue ", colorSensorL.blue());
+//					//telemetry.addData("Hue", hsvValues[0]);
+
+
+					telemetry.addData("front", 1);
 					telemetry.addData("LED", bLedOn ? "On" : "Off");
-					telemetry.addData("Clear", colorSensor.alpha());
-					telemetry.addData("Red  ", colorSensor.red());
-					telemetry.addData("Green", colorSensor.green());
-					telemetry.addData("Blue ", colorSensor.blue());
-					telemetry.addData("Hue", hsvValues[0]);
+					telemetry.addData("Clear", colorSensorF.alpha());
+					telemetry.addData("Red  ", colorSensorF.red());
+					//telemetry.addData("Green", colorSensor.green());
+					telemetry.addData("Blue ", colorSensorF.blue());
+					//telemetry.addData("Hue", hsvValues[0]);
+
+
+
+
 
 					// change the background color to match the color detected by the RGB sensor.
 					// pass a reference to the hue, saturation, and value array as an argument
