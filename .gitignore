@@ -6,7 +6,5 @@ FtcRobotController
 build/
 *.gradle
 gradle/
-doc/
-libs/
 gradlew*
 local.properties
