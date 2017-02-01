@@ -50,15 +50,16 @@ public class Blue_Autonomous extends LinearOpMode{
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     DRIVE_SPEED_FAST             = 0.6;
-    static final double     DRIVE_SPEED_SLOW             = 0.2;
-    static final double     TURN_SPEED              = 0.3;
+    static final double     DRIVE_SPEED_FAST             = 0.5;
+    static final double     DRIVE_SPEED_SLOW             = 0.5;
+    static final double     TURN_SPEED              = 0.5;
 
     Servo   servo;
     //ColorSensor sensorRGB1;
     //ColorSensor colorSensorL;
     ColorSensor colorSensorR;// Hardware Device Object
     ColorSensor colorSensorF;
+    ColorSensor colorSensorL;
     //ColorSensor sensorRGB2;
     DeviceInterfaceModule cdim;
     @Override
@@ -73,7 +74,7 @@ public class Blue_Autonomous extends LinearOpMode{
 
         double LPower = 0.2;
         double RPower = 0.2;
-        double Kp = (1 - LPower) / (25);
+        double Kp = (1 - LPower) / (15);
         double errorR = 0.0;
         double errorL = 0.0;
 
@@ -82,14 +83,18 @@ public class Blue_Autonomous extends LinearOpMode{
     //    colorSensorL = hardwareMap.colorSensor.get("color sensor left");
         colorSensorR = hardwareMap.colorSensor.get("color sensor right");
         colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
+        colorSensorL = hardwareMap.colorSensor.get("color sensor left");
 
 
         colorSensorR.setI2cAddress(I2cAddr.create8bit(0x5c));
         colorSensorF.setI2cAddress(I2cAddr.create8bit(0x4c));
 
 
+
         colorSensorF.enableLed(false);
         colorSensorR.enableLed(true);
+        colorSensorL.enableLed(true);
+
 
         // turn the LED on in the beginning, just so user will know that the sensor is active.
 
@@ -140,7 +145,7 @@ public class Blue_Autonomous extends LinearOpMode{
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        servo.setPosition(0.65);
+        //servo.setPosition(0.65);
 
 
 
@@ -148,9 +153,9 @@ public class Blue_Autonomous extends LinearOpMode{
         waitForStart();
 
         // Step through each leg of the path,verse movement is obtained by s
-        // Note: Reetting a negative distance (not speed)
-        telemetry.addData("STARTED", 6666);
-        encoderDrive(DRIVE_SPEED_FAST, 9, -9, 9, -9, 5.0);  //drive forward
+        // Note: Reetting a negative distance (not sped)
+   //     telemetry.addData("STARTED", 6666);
+        //encoderDrive(DRIVE_SPEED_FAST, -9, 9, -9, 9, 5.0);  //drive forward
         LFMotor.setPower(0);
         LBMotor.setPower(0);
         RFMotor.setPower(0);
@@ -162,26 +167,27 @@ public class Blue_Autonomous extends LinearOpMode{
 
         servo.setPosition(.28);
 
-        while((getRuntime() - start)< 2){
+        /*while((getRuntime() - start)< 2){
             Launch.setPower(.6);
-            //Conveyor.setPower(1);
-        }
+            Conveyor.setPower(1);
+        }*/
         Launch.setPower(0);
         servo.setPosition(.6);
 
-        encoderDrive(TURN_SPEED, -4, -4, -4, -4, 4.0);   // turn right
 
         while (colorSensorR.alpha() < 30) {
            //telemetry.addData("color", colorSensorL.alpha());
-            telemetry.addData("color", colorSensorR.alpha());
+            //telemetry.addData("color", colorSensorR.alpha());
             telemetry.update();
-            LFMotor.setPower(.4);
-            LBMotor.setPower(.4);
-            RFMotor.setPower(-.4);
-            RBMotor.setPower(-.4);
+            LFMotor.setPower(-.4);
+            LBMotor.setPower(-.4);
+            RFMotor.setPower(.4);
+            RBMotor.setPower(.4);
             sleep(50);
             idle();
         }
+
+        encoderDrive(TURN_SPEED, -3.5, -3.5, -3.5, -3.5, 4.0);   // turn right
 
 
 
@@ -192,8 +198,9 @@ public class Blue_Autonomous extends LinearOpMode{
         RFMotor.setPower(0);
         RBMotor.setPower(0);
         sleep(1000);
-//
+
         while(colorSensorF.alpha() < 2) {
+            telemetry.addData("ERROR R: ", errorR);
             telemetry.addData("front", colorSensorF.alpha());
             telemetry.update();
             LPower = .2;
@@ -205,7 +212,7 @@ public class Blue_Autonomous extends LinearOpMode{
 
 
             // 50 is white 0 is black
-            errorR = colorSensorR.alpha() - 25;
+            errorR = Math.abs(colorSensorR.alpha() - 25);
             //errorL = colorSensorL.alpha() - 25;
             if (colorSensorR.alpha() > 30) {
                 //telemetry.addData("RIGHT", 2);
@@ -216,28 +223,34 @@ public class Blue_Autonomous extends LinearOpMode{
                 RPower = RPower * (1 - (Kp * errorR));
                // telemetry.addData("RPower: ", RPower);
 
+            }
+             else if (colorSensorR.alpha() < 20) {
 
-            } else if (colorSensorR.alpha() < 20) {
+                LPower = .2;
+                RPower = .4;
+
                 //the right sensor is seeing grey needs to go left
-               // telemetry.addData("LEFT", 2);
+                //telemetry.addData("LEFT", 2);
                 //telemetry.update();
-                RPower = RPower * (1 - (Kp * errorR));
-               // telemetry.addData("RPower: ", RPower);
-                LPower = LPower * (1 + (Kp * errorR));
+//                RPower = RPower * (1 + (Kp * errorR));
+//               // telemetry.addData("RPower: ", RPower);
+//                LPower = LPower * (1 - (Kp * errorR));
                // telemetry.addData("LPower: ", LPower);
 
-            } else {
+            }
+            else {
                 //both are in between 20 and 30 so both are seeing the line
                 //telemetry.addData("STRAIGHT", 2);
                 //telemetry.update();
+               RPower = .2;
                 LPower = .2;
-                RPower = .2;
+
             }
 
-            LFMotor.setPower(LPower);
-            RFMotor.setPower(-RPower);
-            RBMotor.setPower(-RPower);
-            LBMotor.setPower(LPower);
+            LFMotor.setPower(-LPower);
+            RFMotor.setPower(RPower);
+            RBMotor.setPower(RPower);
+            LBMotor.setPower(-LPower);
             sleep(50);
 
 
@@ -254,59 +267,53 @@ public class Blue_Autonomous extends LinearOpMode{
             int red =0;
             int blue = 0;
 
-        for(int x =0; x<100; x++) {
-
-            if (colorSensorF.red() > colorSensorF.blue()) {
-                red++;
-            } else {
-                blue++;
-            }
-
-
-        }
-        encoderDrive(DRIVE_SPEED_FAST, -3, 3, -3, 3, 5.0);  //drive forward
-
-
-        telemetry.addData("red",  red);
-        telemetry.addData("bLue", blue);
-        telemetry.update();
-        if(red>blue){
-            telemetry.addData("COLOR: ", "red");
-            servo.setPosition(.55);
-
-            encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
-            sleep(100);
-            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
-
-        }
-        else {
-            telemetry.addData("COLOR: ", "blue");
-            servo.setPosition(.24);
-            encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
-            sleep(100);
-            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
-            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
-        }
-
-
-        encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
-        encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
-        encoderDrive(DRIVE_SPEED_SLOW, 2, -2, 2, -2, 5.0);
-
+//        for(int x =0; x<100; x++) {
+//
+//            if (colorSensorF.red() > colorSensorF.blue()) {
+//                red++;
+//            } else {
+//                blue++;
+//            }
+//
+//
+//        }
+//        encoderDrive(DRIVE_SPEED_FAST, -3, 3, -3, 3, 5.0);  //drive forward
+//
+//
+//        telemetry.addData("red",  red);
+//        telemetry.addData("bLue", blue);
+//        telemetry.update();
+//        if(red>blue){
+//            telemetry.addData("COLOR: ", "red");
+//            servo.setPosition(.55);
+//
+//            encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right
+//            sleep(100);
+//            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, 5, -5, 5, -5, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, -5, 5, -5, 5, 5.0);
+//
+//        }
+//        else {
+//            telemetry.addData("COLOR: ", "blue");
+//            servo.setPosition(.24);
+//            encoderDrive(TURN_SPEED, -.2, -.2, -.2, -.2, 4.0);   // turn right
+//            sleep(100);
+//            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, 4.2, -4.2, 4.2, -4.2, 5.0);
+//            encoderDrive(DRIVE_SPEED_SLOW, -4.2, 4.2, -4.2, 4.2, 5.0);
+//        }
+//
+//
+//        encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
+//        encoderDrive(TURN_SPEED, 13, 13, 13, 13, 4.0);   // turn right
+//        encoderDrive(DRIVE_SPEED_SLOW, 2, -2, 2, -2, 5.0);
+//
 
 
     }
-
-
-
-
-
-
 
 
     public void encoderDrive(double speed,
