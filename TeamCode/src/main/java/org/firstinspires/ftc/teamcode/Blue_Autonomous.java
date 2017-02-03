@@ -217,8 +217,8 @@ public class Blue_Autonomous extends LinearOpMode{
             telemetry.update();
             LFMotor.setPower(.4);
             LBMotor.setPower(.4);
-            RFMotor.setPower(.4);
-            RBMotor.setPower(.4);
+            RFMotor.setPower(.6);
+            RBMotor.setPower(.6);
             sleep(100);
             LFMotor.setPower(0);
             LBMotor.setPower(0);
@@ -315,7 +315,7 @@ public class Blue_Autonomous extends LinearOpMode{
 
 
         long timer = System.currentTimeMillis();
-        while(System.currentTimeMillis() - timer < 1000) {
+        while(System.currentTimeMillis() - timer < 500) {
             telemetry.addData("ERROR R: ", errorR);
             telemetry.addData("front", colorSensorF.alpha());
             telemetry.update();
@@ -350,8 +350,10 @@ public class Blue_Autonomous extends LinearOpMode{
         RBMotor.setPower(0);
         LBMotor.setPower(0);
 
+        encoderDrive(DRIVE_SPEED_FAST, 4, 4, -4, -4, 5.0);
 
-        servo.setPosition(.21);
+
+        servo.setPosition(.3);
 
 //
 //        encoderDrive(DRIVE_SPEED_SLOW, -13, 13, -13, 13, 5.0);
