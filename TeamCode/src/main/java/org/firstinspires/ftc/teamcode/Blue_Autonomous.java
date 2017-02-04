@@ -32,7 +32,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * FTC Team 6051
  * Blue Autonomous
  */
-@Autonomous(name="Blue Autonomous", group="RGB + Encoder")
+@Autonomous(name="Blue Autonomous+++", group="RGB + Encoder")
 
 public class Blue_Autonomous extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();
@@ -236,12 +236,12 @@ public class Blue_Autonomous extends LinearOpMode{
         RBMotor.setPower(0);
         sleep(50);
 
-        while(colorSensorF.alpha() < 2) {
+        while(colorSensorF.alpha() < 2 ) {
             telemetry.addData("ERROR R: ", errorR);
             telemetry.addData("front", colorSensorF.alpha());
             telemetry.update();
-            LPower = .2;
-            RPower = .2;
+            LPower = .15;
+            RPower = .15;
 
             errorR = Math.abs(colorSensorR.alpha() - 25);
             if (colorSensorR.alpha() > 30) {
@@ -250,12 +250,12 @@ public class Blue_Autonomous extends LinearOpMode{
 
             }
              else if (colorSensorR.alpha() < 20) {
-                LPower = .2;
-                RPower = .4;
+                LPower = .15;
+                RPower = .3;
             }
             else {
-               RPower = .2;
-                LPower = .2;
+               RPower = .15;
+                LPower = .15;
             }
 
             LFMotor.setPower(-LPower);
@@ -263,8 +263,14 @@ public class Blue_Autonomous extends LinearOpMode{
             RBMotor.setPower(RPower);
             LBMotor.setPower(-LPower);
             sleep(50);
+            LFMotor.setPower(0);
+            RFMotor.setPower(0);
+            RBMotor.setPower(0);
+            LBMotor.setPower(0);
+            sleep(200);
             idle();
-            }
+
+        }
 
             LFMotor.setPower(0);
             RFMotor.setPower(0);
