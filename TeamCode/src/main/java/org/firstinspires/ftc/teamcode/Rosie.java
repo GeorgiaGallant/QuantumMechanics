@@ -53,7 +53,32 @@ public class Rosie extends LinearOpMode {
             //driver gamepad 1
 
             //drive
-            if(Math.abs(gamepad1.left_stick_y) > 0.5) {
+
+            if(gamepad1.dpad_down==true) {
+                FL.setPower(-.25);
+                FR.setPower(.25);
+                BR.setPower(.25);
+                BL.setPower(-.25);
+            }
+            else if(gamepad1.dpad_up==true) {
+                FL.setPower(.25);
+                FR.setPower(-.25);
+                BR.setPower(-.25);
+                BL.setPower(.25);
+            }
+            else if(gamepad1.dpad_right==true) {
+                FL.setPower(-.45);
+                FR.setPower(-.45);
+                BR.setPower(-.45);
+                BL.setPower(-.45);
+            }
+            else if(gamepad1.dpad_left==true) {
+                FL.setPower(.45);
+                FR.setPower(.45);
+                BR.setPower(.45);
+                BL.setPower(.45);
+            }
+            else if(Math.abs(gamepad1.left_stick_y) > 0.5) {
                 FL.setPower(-gamepad1.left_stick_y);
                 FR.setPower(gamepad1.left_stick_y);
                 BR.setPower(gamepad1.left_stick_y);
@@ -64,7 +89,9 @@ public class Rosie extends LinearOpMode {
                 BL.setPower(-gamepad1.left_stick_x);
                 FR.setPower(-gamepad1.left_stick_x);
                 BR.setPower(-gamepad1.left_stick_x);
-            }else{
+            }
+
+            else{
                 FL.setPower(0);
                 FR.setPower(0);
                 BR.setPower(0);
@@ -87,6 +114,10 @@ public class Rosie extends LinearOpMode {
             // butto pusher
 
             //button pusher code goes here!!!!
+
+            //slow drive
+
+
 
 
 
