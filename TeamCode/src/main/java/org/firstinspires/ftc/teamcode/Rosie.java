@@ -25,6 +25,7 @@ public class Rosie extends LinearOpMode {
     DcMotor Elevator = null;
     DcMotor Launch = null;
     Servo door = null;
+    Servo buttonPusher = null;
     DcMotor Lift = null;
 
 
@@ -43,6 +44,10 @@ public class Rosie extends LinearOpMode {
         Lift = hardwareMap.dcMotor.get("Lift");
         door = hardwareMap.servo.get("door");
         door.setPosition(.3 );//open
+        buttonPusher = hardwareMap.servo.get("buttonPusher");
+        buttonPusher.setPosition(.7);
+
+
         // Wait for the game to start (drive,,,,
                 // p-r presses PLAY)
         waitForStart();
@@ -113,17 +118,12 @@ public class Rosie extends LinearOpMode {
             }
             // butto pusher
 
-            //button pusher code goes here!!!!
-
-            //slow drive
-
-
-
-
-
-
-
-
+            if(gamepad1.b == true){
+                buttonPusher.setPosition(.7); //open
+            }
+            else if(gamepad1.x == true){
+                buttonPusher.setPosition(0); //open
+            }
 
             //gunner game pad 2
 
