@@ -36,7 +36,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name="launcher-controller", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+//@TeleOp(name="launcher-controller", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+
 public class ControlLauncher extends LinearOpMode {
 
     DcMotor launcherMotor = null;

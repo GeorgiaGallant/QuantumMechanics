@@ -54,7 +54,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Grete/", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+//@TeleOp(name="Grete...", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+
 public class Grete1 extends LinearOpMode {
 
     /* Declare OpMode members. */

@@ -1,84 +1,128 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.rosie;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.I2cAddr;
+import com.qualcomm.robotcore.robocol.RobocolParsable;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by student on 10/6/16.
+ * Quantum Mechanics
+ * FTC Team 6051
+ * Blue Autonomous
  */
-@Autonomous(name="Gyro1Deg", group="RGB + Encoder")
-@Disabled
 
-public class One_Degree extends LinearOpMode{
-    //Gyro g = new Gyro(this);
-    private ElapsedTime     runtime = new ElapsedTime();
+@Autonomous(name="Rosie Test Blue 2/22", group="Rosie Auto")
+
+public class TESTISH extends LinearOpMode {
+    public static final double lineThresh = 25.000;
+    private ElapsedTime runtime = new ElapsedTime();
     DcMotor LFMotor;
     DcMotor RFMotor;
     DcMotor LBMotor;
     DcMotor RBMotor;
-    static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
-    static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
-    static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
+    DcMotor NOM;
+    DcMotor Elevator;
+    DcMotor Conveyor;
+    DcMotor Launch;
+
+    static final double     COUNTS_PER_MOTOR_REV    = 1440.000 ;    // eg: TETRIX Motor Encoder
+    static final double     DRIVE_GEAR_REDUCTION    = 2.000 ;     // This is < 1.0 if geared UP
+    static final double     WHEEL_DIAMETER_INCHES   = 4.000 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     DRIVE_SPEED             = 0.6;
-    static final double     TURN_SPEED              = 0.5;
+    static final double     TURN_SPEED              = 0.500;
 
-    Servo   servo;
+    Servo servo;
+    ColorSensor colorSensorR;
+    ColorSensor colorSensorF;
     DeviceInterfaceModule cdim;
     @Override
     public void runOpMode() throws InterruptedException {
+
+        float hsvValues[] = {0F, 0F, 0F};
+        final float values[] = hsvValues;
+
+        double LPower = 0.200;
+        double RPower = 0.200;
+        double Kp = .005;
+        double errorR = 0.00;
+
+
+        colorSensorR = hardwareMap.colorSensor.get("right sensor");
+        colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
+
+        colorSensorR.setI2cAddress(I2cAddr.create8bit(0x5c));
+        colorSensorF.setI2cAddress(I2cAddr.create8bit(0x4c));
+
+        colorSensorF.enableLed(false); //reflects off of beacon if on
+        colorSensorR.enableLed(true);
+
         cdim = hardwareMap.deviceInterfaceModule.get("dim");
-        Gyro g = new Gyro(this);
 
-        //Resetting encoders
-        telemetry.addData("Status", "Resetting Encoders");    //
-        telemetry.update();
-        LFMotor = hardwareMap.dcMotor.get("LFMotor");
-        LBMotor = hardwareMap.dcMotor.get("LBMotor");
-        RFMotor = hardwareMap.dcMotor.get("RFMotor");
-        RBMotor = hardwareMap.dcMotor.get("RBMotor");
-
+        LFMotor = hardwareMap.dcMotor.get("FR");
+        LBMotor = hardwareMap.dcMotor.get("BR");
+        RFMotor = hardwareMap.dcMotor.get("FL");
+        RBMotor = hardwareMap.dcMotor.get("BL");
+        NOM = hardwareMap.dcMotor.get("NOM");
+        Elevator = hardwareMap.dcMotor.get("Elevator");
+        Launch = hardwareMap.dcMotor.get("Launch");
         servo = hardwareMap.servo.get("buttonPusher");
+
+        NOM.setDirection(DcMotor.Direction.REVERSE);
+
+        telemetry.addData("Status", "Resetting Encoders");
+        telemetry.update();
 
         LFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         LBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        idle();
 
         LFMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         RFMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         LBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         RBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        g.calibrate();
+        waitForStart();
+        double runTime = getRuntime();
+        while(getRuntime() - runTime < 1500) {  //while front sensor isn't close to the beacon
+            telemetry.addData("RIGHT SENSOR: ", colorSensorR.alpha());
 
-        while(g.isCalibrating()){
-            telemetry.addData("GYRO", "Calibrating");
+            if(colorSensorR.alpha() < 25){  //bottom right sensor sees black
+                telemetry.addData("LEFT", 0);
+                 drive(.1, .3); //turn left
+            }
+            else if(colorSensorR.alpha() > 40){ //sees white
+                telemetry.addData("RIGHT", 0);
+
+                drive(.3, .1);
+            }
+            else{ //is on line
+                telemetry.addData("STRAIGHT", 0);
+                drive(.1, .1);
+            }
             telemetry.update();
-            sleep(1000);
             idle();
         }
-
-        telemetry.addData("GYRO", "Done calibrating");
-        telemetry.update();
-
-        waitForStart();
-
-        g.turnTo(-85);
-
-        telemetry.addData("GAngle", g.getAngle());
-        telemetry.update();
-
+        drive(0,0);
 
     }
+
+
+    public void drive(double left, double right){
+
+        LFMotor.setPower(-left);
+        RFMotor.setPower(right);
+        RBMotor.setPower(right);
+        LBMotor.setPower(-left);
+
+    }
+
     public void encoderDrive(double speed,
                              double LFInches, double RFInches, double LBInches, double RBInches,
                              double timeoutS) throws InterruptedException {
@@ -121,28 +165,6 @@ public class One_Degree extends LinearOpMode{
                     (runtime.seconds() < timeoutS) &&
                     (LFMotor.isBusy() && RFMotor.isBusy() && LBMotor.isBusy() && RBMotor.isBusy())) {
 
-                // Display it for the driver.
-//                telemetry.addData("Path1",  "Running to %7d :%7d", newLFTarget,  newRFTarget, newLBTarget, newRBTarget);
-//                telemetry.addData("Path2",  "Running at %7d :%7d",
-//                        LFMotor.getCurrentPosition(),
-//                        RFMotor.getCurrentPosition(),
-//                        LBMotor.getCurrentPosition(),
-//                        RBMotor.getCurrentPosition());
-                //telemetry.update();
-//
-//                telemetry.addData("Clear 1", sensorRGB1.alpha());
-//                telemetry.addData("Red  1", sensorRGB1.red());
-//                telemetry.addData("Green 1", sensorRGB1.green());
-//                telemetry.addData("Blue 1", sensorRGB1.blue());
-//                if(sensorRGB1.red()>sensorRGB1.blue()){
-//                    telemetry.addData("COLOR: ", "red");
-//                }
-//                else {
-//                    telemetry.addData("COLOR: ", "blue");
-//                }
-//                telemetry.update();
-
-                // Allow time for other processes to run.
                 idle();
             }
 
@@ -162,3 +184,7 @@ public class One_Degree extends LinearOpMode{
         }
     }
 }
+
+
+
+

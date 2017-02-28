@@ -46,8 +46,7 @@ import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DigitalChannelController;
 import com.qualcomm.robotcore.hardware.LightSensor;
 
-@Autonomous(name = "LineSensor", group = "Sensor")
-//@Disabled                            // Comment this out to add to the opmode list
+//@Autonomous(name = "LineSensor", group = "Sensor")
 public class LineSensor extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         DeviceInterfaceModule cdim = hardwareMap.deviceInterfaceModule.get("dim");

@@ -82,7 +82,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      */
 
     @Autonomous(name="Encoder Test", group="Pushbot")
-//@Disabled
+@Disabled
     public class EncoderTest extends LinearOpMode {
 
         /* Declare OpMode members. */

@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Blue Autonomous
  */
 @Autonomous(name="Blue Autonomous+++", group="RGB + Encoder")
+@Disabled
 
 public class Blue_Autonomous extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();

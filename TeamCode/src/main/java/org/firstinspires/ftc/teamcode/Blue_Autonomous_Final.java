@@ -33,7 +33,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Blue Autonomous
  */
 @Autonomous(name="Blue Autonomous FINAL", group="RGB + Encoder")
-
+@Disabled
 public class Blue_Autonomous_Final extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();
     DcMotor LFMotor;

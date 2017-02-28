@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 
-@Autonomous(name="ServoTest", group="RGB + Encoder")
+//@Autonomous(name="ServoTest", group="RGB + Encoder")
 
 public class servoTest extends LinearOpMode {
     Servo   servo;

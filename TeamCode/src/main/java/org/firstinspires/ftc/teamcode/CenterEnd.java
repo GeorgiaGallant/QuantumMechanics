@@ -32,7 +32,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="CenterEnd", group="RGB + Encoder")
-
+@Disabled
 public class CenterEnd extends LinearOpMode{
 
 

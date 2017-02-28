@@ -44,6 +44,7 @@ import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 
 @Autonomous(name = "Color One", group = "Sensor")
+@Disabled
 public class ColorOne extends LinearOpMode {
 
     ColorSensor colorSensorR;
@@ -52,8 +53,10 @@ public class ColorOne extends LinearOpMode {
 	DeviceInterfaceModule cdim;
 
 	@Override
+
 	public void runOpMode() throws InterruptedException {
-		cdim = hardwareMap.deviceInterfaceModule.get("dim");
+
+				cdim = hardwareMap.deviceInterfaceModule.get("dim");
 
 				// hsvValues is an array that will hold the hue, saturation, and value information.
 				float hsvValues[] = {0F,0F,0F};
@@ -75,6 +78,7 @@ public class ColorOne extends LinearOpMode {
 //
 		colorSensorF = hardwareMap.colorSensor.get("color sensor beacon");
 		colorSensorF.setI2cAddress(I2cAddr.create8bit(0x4c));
+		colorSensorF.enableLed(true);
 		//colorSensorF.enableLed(true);
 
 				// Set the LED in the beginning

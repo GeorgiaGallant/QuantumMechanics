@@ -14,6 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by student on 10/13/16.
  */
 @Autonomous(name = "line Follower", group = "Sensor")
+@Disabled
 
 public class lineFollowing extends LinearOpMode {
     ColorSensor colorSensor;  // Hardware Device Object

@@ -51,8 +51,7 @@ public class capBallShootBlue extends LinearOpMode {
     DcMotor LBMotor;
     DcMotor RBMotor;
     DcMotor NOM;
-    DcMotor Elevator;
-    DcMotor Conveyor;
+    DcMotor Elevator;//DcMotor Conveyor;
     DcMotor Launch;
 
     static final double COUNTS_PER_MOTOR_REV = 1440;    // eg: TETRIX Motor Encoder
@@ -64,11 +63,11 @@ public class capBallShootBlue extends LinearOpMode {
     static final double DRIVE_SPEED_SLOW = 0.2;
     static final double TURN_SPEED = 0.3;
 
-    Servo servo;
+    Servo door;
     //ColorSensor sensorRGB1;
-    ColorSensor colorSensorL;
+   // ColorSensor colorSensorL;
     //ColorSensor colorSensorR;// Hardware Device Object
-    ColorSensor colorSensorF;
+   // ColorSensor colorSensorF;
     //ColorSensor sensorRGB2;
     DeviceInterfaceModule cdim;
 
@@ -93,23 +92,24 @@ public class capBallShootBlue extends LinearOpMode {
         //sensorRGB1 = hardwareMap.colorSensor.get("beaconColor");
 
         //Resetting encoders
-        LFMotor = hardwareMap.dcMotor.get("FL");
-        LBMotor = hardwareMap.dcMotor.get("BL");
-        RFMotor = hardwareMap.dcMotor.get("FR");
-        RBMotor = hardwareMap.dcMotor.get("BR");
+        LFMotor = hardwareMap.dcMotor.get("FR");
+        LBMotor = hardwareMap.dcMotor.get("BR");
+        RFMotor = hardwareMap.dcMotor.get("FL");
+        RBMotor = hardwareMap.dcMotor.get("BL");
         NOM = hardwareMap.dcMotor.get("NOM");
+        door = hardwareMap.servo.get("door");
         Elevator = hardwareMap.dcMotor.get("Elevator");
-        Conveyor = hardwareMap.dcMotor.get("Conveyor");
+       // Conveyor = hardwareMap.dcMotor.get("Conveyor");
         Launch = hardwareMap.dcMotor.get("Launch");
 
 
         NOM.setDirection(DcMotor.Direction.REVERSE);
-        Conveyor.setDirection(DcMotor.Direction.REVERSE);
+        //Conveyor.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
-        servo = hardwareMap.servo.get("buttonPusher");
+        //servo = hardwareMap.servo.get("buttonPusher");
 
         LFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -129,7 +129,7 @@ public class capBallShootBlue extends LinearOpMode {
                 RBMotor.getCurrentPosition(),
                 LFMotor.getCurrentPosition());
         telemetry.update();
-        servo.setPosition(.67);
+        //servo.setPosition(.67);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -140,9 +140,10 @@ public class capBallShootBlue extends LinearOpMode {
 
         //sleep(14000);
 
+        sleep(5000);
+        encoderDrive(DRIVE_SPEED_FAST, 10.0, -10.0, 10.0, -10.0, 5.0);  //drive forward
+        door.setPosition(.3 );
 
-        encoderDrive(DRIVE_SPEED_FAST, 9.9, -9.9, 9.9, -9.9, 5.0);  //drive forward
-        encoderDrive(TURN_SPEED, .2, .2, .2, .2, 4.0);   // turn right            LFMotor.setPower(0);
         LBMotor.setPower(0);
         RFMotor.setPower(0);
         RBMotor.setPower(0);
@@ -151,26 +152,27 @@ public class capBallShootBlue extends LinearOpMode {
         double start = getRuntime();
 
 
-        servo.setPosition(.28);
+       // servo.setPosition(.28);
         while ((getRuntime() - start) < 2) {
             Launch.setPower(.6);
         }
         Launch.setPower(0);
         start = getRuntime();
         while ((getRuntime() - start) < 2) {
-            Conveyor.setPower(1);
+            door.setPosition(.85);
+            Elevator.setPower(-1);
         }
 
         start = getRuntime();
-        while ((getRuntime() - start) < 2.2) {
+        while ((getRuntime() - start) < 2.05) {
             Launch.setPower(.6);
         }
-        Conveyor.setPower(0);
+        Elevator.setPower(0);
         Launch.setPower(0);
-        servo.setPosition(.67);
+        //servo.setPosition(.67);
 
-        encoderDrive(TURN_SPEED, -1, -1, -1, -1, 4.0);   // turn right
-        encoderDrive(DRIVE_SPEED_FAST, 10, -10, 10, -10, 5.0);  //drive forward
+        encoderDrive(TURN_SPEED, .65, .65, .65, .65 , 4.0);
+        encoderDrive(DRIVE_SPEED_FAST, 3, -3, 3, -3, 5.0);  //drive forward
         LFMotor.setPower(0);
         LBMotor.setPower(0);
         RFMotor.setPower(0);

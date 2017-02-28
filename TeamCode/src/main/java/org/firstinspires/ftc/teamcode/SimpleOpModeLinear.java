@@ -49,7 +49,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Linear OpMode", group="Linear Opmode")  // @Autonomous(...) is the other common choice
+//@TeleOp(name="Linear OpMode", group="Linear Opmode")  // @Autonomous(...) is the other common choice
 public class SimpleOpModeLinear extends LinearOpMode {
 
     /* Declare OpMode members. */

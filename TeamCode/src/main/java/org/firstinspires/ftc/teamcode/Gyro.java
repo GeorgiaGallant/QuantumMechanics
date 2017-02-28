@@ -116,10 +116,10 @@ public class Gyro{
     }
 
     private void setupDevices(){
-        LFMotor = hardwareMap.dcMotor.get("LFMotor");
-        LBMotor = hardwareMap.dcMotor.get("LBMotor");
-        RFMotor = hardwareMap.dcMotor.get("RFMotor");
-        RBMotor = hardwareMap.dcMotor.get("RBMotor");
+        LFMotor = hardwareMap.dcMotor.get("FL");
+        LBMotor = hardwareMap.dcMotor.get("BL");
+        RFMotor = hardwareMap.dcMotor.get("FR");
+        RBMotor = hardwareMap.dcMotor.get("BR");
         gyro = (ModernRoboticsI2cGyro)hardwareMap.gyroSensor.get("gyro");
     }
     public double getAngle(){

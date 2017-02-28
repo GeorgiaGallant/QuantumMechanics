@@ -19,6 +19,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by student on 10/6/16.
  */
 @Autonomous(name="RGB + Encoder", group="RGB + Encoder")
+@Disabled
 
 public class Encoder_RGB_Integration extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();

@@ -31,6 +31,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by student on 10/6/16.
  */
 @Autonomous(name="Blue Autonomous + Gyro", group="RGB + Encoder")
+@Disabled
 
 public class Gyro_Blue_Integration_Attempt extends LinearOpMode{
     private ElapsedTime     runtime = new ElapsedTime();

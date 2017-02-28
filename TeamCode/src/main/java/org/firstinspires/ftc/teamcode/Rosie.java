@@ -72,16 +72,16 @@ public class Rosie extends LinearOpMode {
                 BL.setPower(.25);
             }
             else if(gamepad1.dpad_right==true) {
-                FL.setPower(-.45);
-                FR.setPower(-.45);
-                BR.setPower(-.45);
-                BL.setPower(-.45);
+                FL.setPower(-.6);
+                FR.setPower(-.6);
+                BR.setPower(-.6);
+                BL.setPower(-.6);
             }
             else if(gamepad1.dpad_left==true) {
-                FL.setPower(.45);
-                FR.setPower(.45);
-                BR.setPower(.45);
-                BL.setPower(.45);
+                FL.setPower(.6);
+                FR.setPower(.6);
+                BR.setPower(.6);
+                BL.setPower(.6);
             }
             else if(Math.abs(gamepad1.left_stick_y) > 0.5) {
                 FL.setPower(-gamepad1.left_stick_y);
@@ -118,10 +118,10 @@ public class Rosie extends LinearOpMode {
             }
             // butto pusher
 
-            if(gamepad1.b == true){
+            if(gamepad1.b == true || gamepad2.b == true){
                 buttonPusher.setPosition(.7); //open
             }
-            else if(gamepad1.x == true){
+            else if(gamepad1.x == true || gamepad2.x == true){
                 buttonPusher.setPosition(0); //open
             }
 
@@ -136,11 +136,9 @@ public class Rosie extends LinearOpMode {
             }
 
             //lift
-            if(gamepad2.dpad_up == true){
-                Lift.setPower(.4);
-            }
-            else if(gamepad2.dpad_down == true){
-                Lift.setPower(-.4);
+
+            if(Math.abs(gamepad2.left_stick_y) > 0.3) {
+                Lift.setPower(gamepad2.left_stick_y);
             }
             else{
                 Lift.setPower(0);

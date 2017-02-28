@@ -31,6 +31,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous(name="Red Autonomous++++", group="RGB + Encoder")
+@Disabled
 
 
 public class Red_Autonomous extends LinearOpMode {
